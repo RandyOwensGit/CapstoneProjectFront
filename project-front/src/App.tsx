@@ -28,8 +28,6 @@ export const App = () => {
                {setPage ? 'Capstone Project @ WilmU' : 'Home Page'}
             </button>
 
-            
-
          </header>
 
       </div>
