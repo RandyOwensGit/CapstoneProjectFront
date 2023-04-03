@@ -7,9 +7,9 @@ function App() {
       <header className="App-header">
         
         <p>
-          RandyOwens.dev coming soon
+          RandyOwens.me coming soon
         </p>
-        
+
       </header>
     </div>
   );
