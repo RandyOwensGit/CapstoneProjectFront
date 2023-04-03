@@ -7,7 +7,7 @@ import { Capstone } from './layouts/Capstone/Capstone';
 export const App = () => {
 
 
-   const [setPage, pageState] = useState(false);
+   const [setPage, pageState] = useState(true);
 
    const PageDisplay = () => {
       pageState(!setPage);
