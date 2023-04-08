@@ -3,6 +3,7 @@ import './App.css';
 import HomePage from './layouts/Homepage/HomePage';
 import { Capstone } from './layouts/Capstone/Capstone';
 import Hangman from './layouts/Hangman/Hangman';
+import video from './assets/4k.mp4';
 
 
 export const App = () => {
@@ -34,69 +35,79 @@ export const App = () => {
 
    return (
 
-      <div className="App">
-         <header className="App-header">
+      <div className="video-container">
 
+         {/* Background Video Container */}
+         <div>
+            <video loop autoPlay muted>
+               <source src={video} type="video/mp4" />
+            </video>
+         </div>
+
+
+         <div className="video-background__content">
             {/* Components to be displayed */}
 
             {/* Display HomePage if targeted */}
-            {homePage
-               ?
-               <div>
-                  <HomePage />
-                  <button
-                     onClick={DisplayCapstone}
-                     className='button-85'
-                     role='button'
-                  >
-                     Capstone Project @ WilmU
-                  </button>
-                  <button style={{ marginLeft: "30px" }}
-                     onClick={DisplayHangman}
-                     className='button-85'
-                     role='button'
-                  >
-                     While we wait.. A little game?
-                  </button>
-               </div>
-               : null
-            }
+               {homePage
+                  ?
+                  <div>
+                     <HomePage />
+                     <button
+                        onClick={DisplayCapstone}
+                        className='button-85'
+                        role='button'
+                     >
+                        Capstone Project @ WilmU
+                     </button>
+                     <button
+                        style={{ marginLeft: "30px" }}
+                        onClick={DisplayHangman}
+                        className='button-85'
+                        role='button'
+                     >
+                        While we wait.. A little game?
+                     </button>
+                  </div>
+                  : null
+               }
 
-            {/* Display Capstone if targeted */}
-            {capstonePage
-               ?
-               <div>
-                  <Capstone />
-                  <button
-                     onClick={DisplayHomepage}
-                     className='button-85'
-                     role='button'
-                  >
-                     Home Page
-                  </button>
-               </div>
-               : null
-            }
+               {/* Display Capstone if targeted */}
+               {capstonePage
+                  ?
+                  <div>
+                     <Capstone />
+                     <button
+                        onClick={DisplayHomepage}
+                        className='button-85'
+                        role='button'
+                     >
+                        Home Page
+                     </button>
+                  </div>
+                  : null
+               }
 
             {/* Display Hangman if targeted */}
-            {hangmanPage
-               ?
-               <div>
-                  <Hangman />
-                  <button style={{ marginTop: "20px" }}
-                     onClick={DisplayHomepage}
-                     className='button-85'
-                     role='button'
-                  >
-                     Home Page
-                  </button>
-               </div>
-               : null
-            }
+            <div>
+               {hangmanPage
+                  ?
+                  <div>
+                     <Hangman />
+                     <button style={{ marginTop: "50px" }}
+                        onClick={DisplayHomepage}
+                        className='button-85'
+                        role='button'
+                     >
+                        Home Page
+                     </button>
+                  </div>
+                  : null
+               }
+            </div>
 
-            
 
-         </header>
+         </div>
 
       </div>
 

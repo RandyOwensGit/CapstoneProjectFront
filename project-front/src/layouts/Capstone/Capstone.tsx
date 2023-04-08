@@ -4,14 +4,10 @@ import '../../App.css';
 export const Capstone = () => {
 
    return (
-      <div className="App">
-         <header className="Temp-Page">
-
+      <div>   
             <p>
-               <h3>Capstone Project Coming Soon 😃</h3>
+               <h2>Capstone Project Coming Soon 😃</h2>
             </p>
-
-         </header>
       </div>
    );
 }

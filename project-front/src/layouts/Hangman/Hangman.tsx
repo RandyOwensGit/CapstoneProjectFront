@@ -88,15 +88,19 @@ function Hangman() {
 
    return (
 
-      <div style={{
-         maxWidth: "1000px",
-         minWidth: "400px",
-         display: "flex",
-         flexDirection: "column",
-         gap: "2rem",
-         margin: "0 auto",
-         alignItems: "center"
-      }}>
+      <div
+         style={{
+            paddingTop: "0px",
+            maxWidth: "50vw",
+            minWidth: "50vw",
+            display: "flex",
+            flexDirection: "column",
+            gap: "2rem",
+            margin: "0 auto",
+            alignItems: "center",
+            justifyContent: "unset",
+         }}
+      >
 
          <div style={{ fontSize: "2rem", textAlign: "center" }}>
             <b>{isWinner && "Winner! - Refresh or 'enter' key to play again"}

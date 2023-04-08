@@ -18,12 +18,13 @@ export function HangmanWord( {
          fontSize: "6rem",
          fontWeight: "bold",
          textTransform: "uppercase", 
-         fontFamily: "monospace"
+         fontFamily: "monospace",
+         color: "#000000",
       }}>
 
          {/* hide or show each letter of word */}
          {targetWord.split("").map((letter, index) => (
-            <span style={{ borderBottom: ".1em solid black" }} key={index}>
+            <span style={{ borderBottom: ".1em solid white" }} key={index}>
                <span style={{ 
                   visibility: 
                      lettersGuessed.includes(letter) || reveal
@@ -32,7 +33,7 @@ export function HangmanWord( {
                   color:
                   // make letters user did not guess red
                      !lettersGuessed.includes(letter) && reveal ?
-                     "red" : "black",
+                     "red" : "white",
                }}>
                   {letter}
                </span>
