@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.scss';
 import './index.scss';
 import HomePage from './layouts/Homepage/HomePage';
-import { Capstone } from './layouts/Capstone/Capstone';
 import Hangman from './layouts/Hangman/Hangman';
 import video from './assets/4k.mp4';
 import { Link } from 'react-router-dom';
@@ -70,23 +69,6 @@ export const App = () => {
                         role='button'
                      >
                         While we wait.. A little game?
-                     </button>
-                  </div>
-                  : null
-               }
-
-               {/* Display Capstone if targeted */}
-               {capstonePage
-                  ?
-                  <div>
-                     <Capstone />
-                     <button
-                        onClick={DisplayHomepage}
-                        className='button-85'
-                        role='button'
-
-                     >
-                        Home Page
                      </button>
                   </div>
                   : null
