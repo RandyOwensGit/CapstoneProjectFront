@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { PageLayout } from './SeniorProject/PageLayout';
+import { PageNotFoundError } from './SeniorProject/layouts/PageNotFoundError';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { UserPage } from './SeniorProject/layouts/UserPage';
+import { Homepage } from './SeniorProject/layouts/Homepage';
 
 const root = ReactDOM.createRoot(
    document.getElementById('root') as HTMLElement
@@ -10,12 +13,20 @@ const root = ReactDOM.createRoot(
 root.render(
 
    <React.StrictMode>
-      <App />
+      <BrowserRouter>
+         {/* Use BrowserRouter to create link to host/SeniorProject */}
+         <Routes>
+            <Route path="/" element={<App />} >
+               <Route index element={<App />} />
+               <Route path="*" element={<PageNotFoundError />} />
+            </Route>
+            <Route path="/SeniorProject/" element={<PageLayout />} >
+               <Route index element={<Homepage />} />
+               <Route path="UserPage" element={<UserPage />} />
+               <Route path="*" element={<PageNotFoundError />} />
+            </Route>
+         </Routes>
+      </BrowserRouter>
    </React.StrictMode>
 
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

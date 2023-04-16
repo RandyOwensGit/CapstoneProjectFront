@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import './App.css';
+import './App.scss';
+import './index.scss';
 import HomePage from './layouts/Homepage/HomePage';
 import { Capstone } from './layouts/Capstone/Capstone';
 import Hangman from './layouts/Hangman/Hangman';
 import video from './assets/4k.mp4';
+import { Link } from 'react-router-dom';
 
 
 export const App = () => {
@@ -53,13 +55,14 @@ export const App = () => {
                   ?
                   <div>
                      <HomePage />
-                     <button
-                        onClick={DisplayCapstone}
-                        className='button-85'
-                        role='button'
-                     >
-                        Capstone Project @ WilmU
-                     </button>
+                     <Link to="/SeniorProject/">
+                        <button
+                           className='button-85'
+                           role='button'
+                        >
+                           Capstone Project @ WilmU
+                        </button>
+                     </Link>
                      <button
                         style={{ marginLeft: "30px" }}
                         onClick={DisplayHangman}
@@ -81,6 +84,7 @@ export const App = () => {
                         onClick={DisplayHomepage}
                         className='button-85'
                         role='button'
+
                      >
                         Home Page
                      </button>
