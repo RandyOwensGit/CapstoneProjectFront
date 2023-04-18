@@ -3,7 +3,7 @@ import './App.scss';
 import './index.scss';
 import HomePage from './layouts/Homepage/HomePage';
 import Hangman from './layouts/Hangman/Hangman';
-import video from './assets/4k.mp4';
+import video from './assets/1080.mp4';
 import { Link } from 'react-router-dom';
 
 
@@ -15,7 +15,7 @@ export const App = () => {
    // const for determining if CapstonePage should be displayed
    const [capstonePage, setCapstonePage] = useState(false);
 
-   // determine if Hangman page should be displayed
+   // determine if Hangman page should` be displayed
    const [hangmanPage, setHangmanPage] = useState(false);
 
    const DisplayHomepage = () => {
@@ -34,6 +34,7 @@ export const App = () => {
       setHomePage(false);
    }
 
+  
    return (
 
       <div className="video-container">
@@ -91,7 +92,6 @@ export const App = () => {
                   : null
                }
             </div>
-
 
          </div>
 
