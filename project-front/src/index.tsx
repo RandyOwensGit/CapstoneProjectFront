@@ -6,6 +6,8 @@ import { PageNotFoundError } from './SeniorProject/layouts/PageNotFoundError';
 import App from './App';
 import { UserPage } from './SeniorProject/layouts/UserPage';
 import { Homepage } from './SeniorProject/layouts/Homepage';
+import { Inserts } from './SeniorProject/layouts/Inserts';
+import Tables from './SeniorProject/layouts/Tables';
 
 const root = ReactDOM.createRoot(
    document.getElementById('root') as HTMLElement
@@ -23,6 +25,8 @@ root.render(
             <Route path="/SeniorProject/" element={<PageLayout />} >
                <Route index element={<Homepage />} />
                <Route path="UserPage" element={<UserPage />} />
+               <Route path="Inserts" element={<Inserts />} />
+               <Route path="Tables" element={<Tables />} />
                <Route path="*" element={<PageNotFoundError />} />
             </Route>
          </Routes>

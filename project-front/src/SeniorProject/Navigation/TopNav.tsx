@@ -34,10 +34,16 @@ export const TopNav = () => {
                {/* <!-- Left links --> */}
                <ul className="navbar-nav mb-2 mb-lg-0">
                   <li className="nav-item">
-                     <a className="nav-link active" aria-current="page" href="#">Home</a>
+                     <Link to="/SeniorProject/" className="nav-link active" aria-current="page"><b>Home</b></Link>
                   </li>
                   <li className="nav-item">
-                     <b><a className="nav-link text-secondary" href="#">User Home</a></b>
+                     <Link to="/SeniorProject/UserPage" className="nav-link text-secondary"><b>User Home</b></Link>
+                  </li>
+                  <li className="nav-item">
+                     <Link to="/SeniorProject/Inserts" className="nav-link text-secondary"><b>Insert</b></Link>
+                  </li>
+                  <li className="nav-item">
+                     <Link to="/SeniorProject/Tables" className="nav-link text-secondary"><b>Tables</b></Link>
                   </li>
                </ul>
                {/* <!-- Left links --> */}
