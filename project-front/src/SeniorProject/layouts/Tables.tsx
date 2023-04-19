@@ -17,7 +17,7 @@ export default () => {
       const fetchTests = async () => {
 
          // URL to backend request - dont need any specification yet
-         const url: string = "https://senior-project-back.onrender.com/api/tests";
+         const url: string = process.env.REACT_APP_BUILD_API_URL + "api/tests";
 
          // hold fetch response
          const response = await fetch(url);
