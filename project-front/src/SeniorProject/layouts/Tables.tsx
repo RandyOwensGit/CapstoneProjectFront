@@ -17,7 +17,7 @@ export default () => {
       const fetchTests = async () => {
 
          // URL to backend request - dont need any specification yet
-         const url: string = "senior-project-back:8080/api/tests";
+         const url: string = "http://senior-project-back:8080/api/tests";
 
          // hold fetch response
          const response = await fetch(url);
