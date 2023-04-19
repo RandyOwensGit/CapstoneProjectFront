@@ -21,7 +21,7 @@ export function Inserts() {
       // send values to database
 
       // POST FORM DATA
-      await fetch('http://senior-project-back:8080/api/tests', {
+      await fetch('https://senior-project-back:8080/api/tests', {
          method: 'POST',
          headers: {
             'Accept': 'application/json',
