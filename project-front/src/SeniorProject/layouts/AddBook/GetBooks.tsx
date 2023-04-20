@@ -1,11 +1,10 @@
+import BookModel from "../../models/BookModel";
 
 /**
  * Pull from Google Books API a maximum of 10 results holding props book title
  * 
  * @returns BookModel[] -- Array of BookModel Objects
  */
-
-import BookModel from "../../models/BookModel";
 
 export const GetBooks = async (search: string) => {
 
@@ -15,8 +14,8 @@ export const GetBooks = async (search: string) => {
 
 async function apiBooks(search: string) {
 
-   // URL to Google Books Public API -- with search from user as query
-   // Google Books API only allows 40 objects reponse -- can iterate over the rest but probably not required
+   // URL to Google Books Public API -- with search input from user as query
+   // Google Books API only allows 40 object reponses -- can iterate over the rest but probably not required
    const url: string = "https://www.googleapis.com/books/v1/volumes?q=" + search + "&maxResults=20";
 
    // hold fetch response

@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
+
 /**
- * Display short search results info
- * Search - Total Books - tooltip (search development is in progress..)
+ * NAVBAR
+ * 
  * @returns component
  */
 
-import { Link } from "react-router-dom";
 
 export const TopNav = () => {
 

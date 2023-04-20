@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 /**
- * Display short search results info
- * Search - Total Books - tooltip (search development is in progress..)
- * @returns component
+ * Universal form handling
+ * 
+ * @returns hooks for form handling
  */
 
 // custom functional component hook to assist with handling form

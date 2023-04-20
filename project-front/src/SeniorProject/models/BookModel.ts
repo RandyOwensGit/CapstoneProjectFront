@@ -1,6 +1,6 @@
 /**
- * Display short search results info
- * Search - Total Books - tooltip (search development is in progress..)
+ * Object to hold API gets from Google API
+ * 
  * @returns component
  */
 

@@ -4,9 +4,6 @@
  * Display short search results info
  * Search - Total Books - tooltip (search development is in progress..)
  * @returns component
- * 
- * TBA: Remove search results? leave Total Results
- * 
  */
 
 export const SearchInfo: React.FC<{search: string, totalItems: number}> = (props) => {

@@ -1,7 +1,7 @@
 
 /**
- * Display short search results info
- * Search - Total Books - tooltip (search development is in progress..)
+ * User homepage for access to common components
+ * 
  * @returns component
  */
 

@@ -1,9 +1,9 @@
 import TestModel from "../../models/TestModel";
 
 /**
- * Display short search results info
- * Search - Total Books - tooltip (search development is in progress..)
- * @returns component
+ * Build Test Table from /tests endpoint
+ * 
+ * @returns table
  */
 
 export const DisplayTable: React.FC<{ tests: TestModel[] }> = (props) => {

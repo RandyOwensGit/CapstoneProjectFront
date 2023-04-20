@@ -6,6 +6,11 @@ import Hangman from './layouts/Hangman/Hangman';
 import video from './assets/1080.mp4';
 import { Link } from 'react-router-dom';
 
+/**
+ * Display Portfolio Homepage
+ * 
+ * @returns component
+ */
 
 export const App = () => {
 

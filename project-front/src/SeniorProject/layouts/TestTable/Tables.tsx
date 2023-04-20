@@ -3,8 +3,8 @@ import TestModel from "../../models/TestModel";
 import { DisplayTable } from "./DisplayTable";
 
 /**
- * Display short search results info
- * Search - Total Books - tooltip (search development is in progress..)
+ * Call /tests endpoint and get all data for a Table to be built
+ * 
  * @returns component
  */
 

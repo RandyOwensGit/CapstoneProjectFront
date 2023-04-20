@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SearchBooks } from "./SearchBooks";
 import { SearchInfo } from "./SearchInfo";
 import BookModel from "../../models/BookModel";
 import { GetBooks } from "./GetBooks";
 import { BookDisplay } from "./BookDisplay";
-import { Col, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 /**
- * Display short search results info
- * Search - Total Books - tooltip (search development is in progress..)
+ * Main component for user searching and adding a book to their tracking
+ * Uses SearchBooks, SearchInfo, GetBooks, BookDisplay
  * @returns component
  */
+
 export const AddBook = () => {
 
    // user search -- items in search -- books fetched
@@ -45,7 +46,6 @@ export const AddBook = () => {
             }
 
             {/* Loop over the books array and display them as a grid of cards */}
-
             <Container>
                <Row xs={5} className="align-items-center" style={{marginTop: '20px'}}>
                   {  // Determine if books array is populated or not and use BookDisplay

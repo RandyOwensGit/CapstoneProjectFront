@@ -10,6 +10,13 @@ import { Inserts } from './SeniorProject/layouts/TestForm/Inserts';
 import Tables from './SeniorProject/layouts/TestTable/Tables';
 import { AddBook } from './SeniorProject/layouts/AddBook/AddBook';
 
+/**
+ * Handles Routing
+ * 
+ * @returns component
+ */
+
+
 const root = ReactDOM.createRoot(
    document.getElementById('root') as HTMLElement
 );

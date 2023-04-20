@@ -1,9 +1,9 @@
 
 
 /**
- * Build Display for BookModel Object parameter
+ * Search Book Input
  * 
- * @returns BookModel Display component
+ * @returns component & search string
  */
 
 import { FloatingLabel, Form } from "react-bootstrap"
