@@ -1,5 +1,10 @@
 import { useForm } from './useForm';
 
+/**
+ * 
+ * @returns 
+ */
+
 // Class to Insert Data into api/tests -- test_table
 export function Inserts() {
 
@@ -11,10 +16,7 @@ export function Inserts() {
    };
 
    // grab handlers from useForm.tsx
-   const { onChange, onSubmit, onSelect, formData } = useForm(
-      addTestRowCallback,
-      initialState,
-   );
+   const { onChange, onSubmit, onSelect, formData } = useForm(addTestRowCallback, initialState,);
 
    // function to execute on form submit
    async function addTestRowCallback() {

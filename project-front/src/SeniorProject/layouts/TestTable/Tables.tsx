@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
-import TestModel from "../models/TestModel";
-import { DisplayTable } from "./TestTable/DisplayTable";
+import TestModel from "../../models/TestModel";
+import { DisplayTable } from "./DisplayTable";
+
+/**
+ * Display short search results info
+ * Search - Total Books - tooltip (search development is in progress..)
+ * @returns component
+ */
 
 export default () => {
 
@@ -29,6 +35,8 @@ export default () => {
 
          // turn response into json
          const responseJson = await response.json();
+
+         console.log(responseJson);
 
          // seperate data 
          const responseData = responseJson._embedded.tests;

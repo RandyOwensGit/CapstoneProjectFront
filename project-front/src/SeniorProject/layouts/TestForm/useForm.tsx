@@ -1,5 +1,11 @@
 import { useState } from "react";
 
+/**
+ * Display short search results info
+ * Search - Total Books - tooltip (search development is in progress..)
+ * @returns component
+ */
+
 // custom functional component hook to assist with handling form
 export const useForm = (callback: any, initialState = {}) => {
 

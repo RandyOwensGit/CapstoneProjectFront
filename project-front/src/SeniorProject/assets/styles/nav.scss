@@ -2,4 +2,13 @@
 $primary: #FBEEC1;
 $secondary: #8D8741;
 
+.bookCard {
+   transition: all 0.4s;
+}
+
+.bookCard:hover {
+   transform: scale(1.15);
+}
+
+
 @import '~bootstrap/scss/bootstrap';

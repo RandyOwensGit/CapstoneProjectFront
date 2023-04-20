@@ -1,7 +1,10 @@
-// Build HTML Table from array props
-
-import { format } from "path";
 import TestModel from "../../models/TestModel";
+
+/**
+ * Display short search results info
+ * Search - Total Books - tooltip (search development is in progress..)
+ * @returns component
+ */
 
 export const DisplayTable: React.FC<{ tests: TestModel[] }> = (props) => {
 

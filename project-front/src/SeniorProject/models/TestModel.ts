@@ -1,4 +1,9 @@
-// Represent each row for Test data
+/**
+ * Display short search results info
+ * Search - Total Books - tooltip (search development is in progress..)
+ * @returns component
+ */
+
 class TestModel {
 
    // test_table column mapping
