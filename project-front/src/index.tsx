@@ -9,13 +9,19 @@ import { Homepage } from './SeniorProject/layouts/Homepage/Homepage';
 import { Inserts } from './SeniorProject/layouts/TestForm/Inserts';
 import Tables from './SeniorProject/layouts/TestTable/Tables';
 import { AddBook } from './SeniorProject/layouts/AddBook/AddBook';
+import { Login } from './SeniorProject/layouts/authentication/login';
+import { Register } from './SeniorProject/layouts/authentication/register';
+import { UserProfile } from './SeniorProject/layouts/authentication/profile';
+import { BoardUser } from './SeniorProject/layouts/UtilLayouts/BoardUser';
+import { BoardMod } from './SeniorProject/layouts/UtilLayouts/BoardMod';
+import { BoardAdmin } from './SeniorProject/layouts/UtilLayouts/BoardAdmin';
+import { Logout } from './SeniorProject/layouts/authentication/logout';
 
 /**
  * Handles Routing
  * 
  * @returns component
  */
-
 
 const root = ReactDOM.createRoot(
    document.getElementById('root') as HTMLElement
@@ -36,6 +42,13 @@ root.render(
                <Route path="Inserts" element={<Inserts />} />
                <Route path="Tables" element={<Tables />} />
                <Route path="AddBook" element={<AddBook />} />
+               <Route path="Profile" element={<UserProfile />} />
+               <Route path="Login" element={<Login />} />
+               <Route path="Registration" element={<Register />} />
+               <Route path="Logout" element={<Logout />} />
+               <Route path="BoardUser" element={<BoardUser />} />
+               <Route path="BoardMod" element={<BoardMod />} />
+               <Route path="BoardAdmin" element={<BoardAdmin />} />
                <Route path="*" element={<PageNotFoundError />} />
             </Route>
          </Routes>

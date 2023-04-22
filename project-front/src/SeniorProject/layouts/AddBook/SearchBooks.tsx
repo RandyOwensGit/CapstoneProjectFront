@@ -21,7 +21,7 @@ export const SearchBooks = ({callback}: any) => {
    return (
 
       <div className="d-flex justify-content-center" style={{marginTop: '3rem'}}>
-         <Form>
+         <Form onSubmit={event => { event.preventDefault(); }}>
             <Form.Group>
 
                {/* Book Search Input Box */}

@@ -46,7 +46,7 @@ async function apiBooks(search: string) {
          if (((responseData[key].volumeInfo.title).toLowerCase()).includes(search.toLowerCase())) {
             // check if there are any authors
             if (typeof responseData[key].volumeInfo.authors === 'undefined') {
-               throw Error("No Authors - Invalid Book");
+               throw new Error("No Authors Found");
             }
 
             // add to books array
@@ -61,7 +61,7 @@ async function apiBooks(search: string) {
          }
 
       } catch (e) {
-         console.error(e + "\n-- Book is missing required value");
+         console.error("Required info not obtained Google API.");
       }
 
    }

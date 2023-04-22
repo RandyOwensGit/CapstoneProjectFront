@@ -6,13 +6,13 @@ import userService from "../../services/user.service";
  * @returns 
  */
 
-export const Homepage = () => {
+export const BoardAdmin = () => {
 
    // testing const to display content
    const [content, setContent] = useState();
 
    async function contentSet() {
-      const response = await userService.getPublicContent();
+      const response = await userService.getAdminBoard();
 
       // set content to response
       setContent(response);

@@ -8,9 +8,10 @@
 
 export const SearchInfo: React.FC<{search: string, totalItems: number}> = (props) => {
 
+   console.log("SEARCH: " + props.search + "    " + props.totalItems);
+
    return (
       <div>
-         <h2 style={{ marginBottom: 0, marginTop: '50px' }}>Search results for: {props.search}</h2>
          <h2 style={{ marginBottom: 0, marginTop: 0 }}>Total results: {props.totalItems}</h2>
       </div>
    )

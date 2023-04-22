@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Container, Nav, Navbar, } from "react-bootstrap";
 
 /**
  * NAVBAR
@@ -11,58 +12,67 @@ export const TopNav = () => {
 
    return (
 
-      // Navbar Creation
-      <nav className="navbar navbar-expand-lg bg-primary">
-         {/* <!-- Container wrapper --> */}
-         <div className="container-fluid">
-            {/* <!-- Toggle button --> */}
-            <button
-               className="navbar-toggler"
-               type="button"
-               data-mdb-toggle="collapse"
-               data-mdb-target="#navbarCenteredExample"
-               aria-controls="navbarCenteredExample"
-               aria-expanded="false"
-               aria-label="Toggle navigation"
-            >
-               <i className="fas fa-bars"></i>
-            </button>
+      <div className="rounded">
 
-            {/* <!-- Collapsible wrapper --> */}
-            <div
-               className="collapse navbar-collapse justify-content-center"
-               id="navbarCenteredExample"
-            >
-               {/* <!-- Left links --> */}
-               <ul className="navbar-nav mb-2 mb-lg-0">
+         {/* Navbar Creation */}
+         <Navbar className="bg-primary">
+            <Container fluid className="mb-2" style={{ maxHeight: '100px', minHeight: '50px' }}>
 
-                  <li className="nav-item">
-                     <Link to="/SeniorProject/" className="nav-link active" aria-current="page"><b>Home</b></Link>
-                  </li>
+               <Nav>
+               <Nav.Link>
+                     <Link to="/SeniorProject/login" className="nav-link text-secondary" aria-current="page">
+                        <b>Login</b>
+                     </Link>
+                  </Nav.Link>
 
-                  <li className="nav-item">
-                     <Link to="/SeniorProject/UserPage" className="nav-link text-secondary"><b>User Home</b></Link>
-                  </li>
+                  <Nav.Link>
+                     <Link to="/SeniorProject/logout" className="nav-link text-secondary" aria-current="page">
+                        <b>Logout</b>
+                     </Link>
+                  </Nav.Link>
+               </Nav>
 
-                  <li className="nav-item">
-                     <Link to="/SeniorProject/Inserts" className="nav-link text-secondary"><b>Insert</b></Link>
-                  </li>
 
-                  <li className="nav-item">
-                     <Link to="/SeniorProject/Tables" className="nav-link text-secondary"><b>Tables</b></Link>
-                  </li>
+               {/* right side of navbar */}
+               {/* TODO: Add Collapse for responsive screen size */}
+               <Nav className="d-flex">
+                  <Nav.Link>
+                     <Link to="/SeniorProject/" className="nav-link text-secondary" aria-current="page">
+                        <b>Home</b>
+                     </Link>
+                  </Nav.Link>
 
-                  <li className="nav-item">
-                     <Link to="/SeniorProject/AddBook" className="nav-link text-secondary"><b>Add Book</b></Link>
-                  </li>
+                  <Nav.Link>
+                     <Link to="/SeniorProject/Profile" className="nav-link text-secondary" aria-current="page">
+                        <b>Profile</b>
+                     </Link>
+                  </Nav.Link>
 
-               </ul>
-               {/* <!-- Left links --> */}
-            </div>
-            {/* <!-- Collapsible wrapper --> */}
-         </div>
-         {/* <!-- Container wrapper --> */}
-      </nav>
+                  <Nav.Link>
+                     <Link to="/SeniorProject/Inserts" className="nav-link text-secondary" aria-current="page">
+                        <b>Inserts</b>
+                     </Link>
+                  </Nav.Link>
+
+                  <Nav.Link>
+                     <Link to="/SeniorProject/Tables" className="nav-link text-secondary" aria-current="page">
+                        <b>Tables</b>
+                     </Link>
+                  </Nav.Link>
+
+                  <Nav.Link>
+                     <Link to="/SeniorProject/AddBook" className="nav-link text-secondary" aria-current="page">
+                        <b>Add Book</b>
+                     </Link>
+                  </Nav.Link>
+               </Nav>
+
+            </Container>
+
+
+         </Navbar>
+
+      </div>
 
    );
 }

@@ -40,7 +40,7 @@ export const AddBook = () => {
             <SearchBooks callback={runSearch} />
 
             { // If search is empty then dont render component
-               (search !== "") 
+               (search !== "" || totalItems === null)  
                ? <SearchInfo search={search} totalItems={totalItems} />
                : null
             }
@@ -49,7 +49,7 @@ export const AddBook = () => {
             <Container>
                <Row xs={5} className="align-items-center" style={{marginTop: '20px'}}>
                   {  // Determine if books array is populated or not and use BookDisplay
-                     (books.length > 0)
+                     (search.length > 0)
                         ? books.map(displayBook => <BookDisplay book={displayBook} />)
                         : null
                   }

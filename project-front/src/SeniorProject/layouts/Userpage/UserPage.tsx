@@ -1,3 +1,4 @@
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 
 /**
  * User homepage for access to common components
@@ -7,8 +8,12 @@
 
 export const UserPage = () => {
 
+
+
    return (
-      <h2>USER PAGE</h2>
+
+      <h2>User Page</h2>
+
    );
 
 }
