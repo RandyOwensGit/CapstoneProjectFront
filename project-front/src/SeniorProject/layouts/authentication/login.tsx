@@ -1,22 +1,19 @@
 import { FormEvent } from "react"
 import { Button, FloatingLabel, Form } from "react-bootstrap"
-import { login as AuthServiceLogin } from "../../services/auth.service";
+import { login as AuthServiceLogin } from "../../services/AuthService";
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
+
+
+/**
+ * Login Form
+ * Logs user in and generates authentication token
+ * @returns React Component for Logging in
+ */
 
 // Login form
 export const Login = () => {
 
    const navigate: NavigateFunction = useNavigate();
-
-   // validate passed username
-   function validateUsername(username: string) {
-
-   }
-
-   // validate passed password
-   function validatePassword(password: string) {
-
-   }
 
    // handle login press
    async function loginHandler(event: FormEvent<HTMLFormElement>): Promise<void> {

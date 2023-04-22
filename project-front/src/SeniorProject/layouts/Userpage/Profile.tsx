@@ -1,4 +1,4 @@
-import { getCurrentUser as AuthServiceGetCurrentUser, getCurrentUser } from "../../services/auth.service"
+import { getCurrentUser as AuthServiceGetCurrentUser, getCurrentUser } from "../../services/AuthService"
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -37,6 +37,11 @@ export const UserProfile: React.FC = () => {
          <p>
             <strong>Authorities:</strong>{" "}
             {formattedUser.roles && formattedUser.roles.map((role: any, index: any) => <li key={index}>{role}</li>)}
+         </p>
+
+         <p>
+            <strong>Date Created:</strong>{" "}
+            { formattedUser.dateCreated.substr(0, 10) }
          </p>
 
 

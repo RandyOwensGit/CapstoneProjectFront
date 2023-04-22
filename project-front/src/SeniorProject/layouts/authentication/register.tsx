@@ -1,22 +1,18 @@
 import { FormEvent } from "react"
 import { Button, FloatingLabel, Form } from "react-bootstrap"
-import { signup as AuthServiceSignup } from "../../services/auth.service";
+import { signup as AuthServiceSignup } from "../../services/AuthService";
 import { useNavigate } from "react-router-dom";
+
+/**
+ * Register Form
+ * Registers user inside registerHandler()
+ * @returns React Component for Registering
+ */
 
 // Register form
 export const Register = () => {
 
    const navigate = useNavigate();
-
-   // validate passed username
-   function validateUsername(username: string) {
-
-   }
-
-   // validate passed password
-   function validatePassword(password: string) {
-
-   }
 
    // handle login press
    function registerHandler(event: FormEvent<HTMLFormElement>): void {
@@ -39,7 +35,7 @@ export const Register = () => {
       try {
          const response = AuthServiceSignup(data.email, data.username, data.password);
 
-         navigate("/login");
+         navigate("/seniorproject/login");
 
          console.log("Registration was succesful. Moving to login page.");
 

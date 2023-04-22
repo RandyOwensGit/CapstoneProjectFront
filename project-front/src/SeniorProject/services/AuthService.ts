@@ -1,12 +1,15 @@
 
+/**
+ * 
+ */
 
-const API_URL = 'https://senior-project-back.onrender.com/api/auth/';
+const API_URL = 'https://senior-project-back.onrender.com/api/user/';
 
 // login post method
 export const login = async (username: string, password: string) => {
 
    // POST data
-   const response = await fetch(API_URL + 'signin', {
+   const response = await fetch(API_URL + 'login', {
       method: 'POST',
       headers: {
          "content-type": "application/json",
@@ -17,25 +20,20 @@ export const login = async (username: string, password: string) => {
       })
    });
 
-   console.log("AuthService Login() - Initial Response: " + JSON.stringify(response));
-
    // check if there is a response
    if (!response) {
       throw new Error('LOGIN ERROR - NO HTTP LOGIN REPONSE');
       
    }
-
+ 
    // turn response into json
    const responseJson = await response.json();
-
-   console.log("AuthService Login() - formatted JSON response: " + JSON.stringify(responseJson));
 
    // check if token was returned -- assign to localStorage for user
    if (responseJson.accessToken) {
       // response to the localStorage user
       localStorage.setItem("user", JSON.stringify(responseJson));
 
-      console.log("AuthService Login() current localStorage for user: " + localStorage.getItem("user"));
    }
 
    return responseJson;
@@ -46,12 +44,9 @@ export const login = async (username: string, password: string) => {
  * Remove the user token from local storage
  */
 export const logout = () => {
-   console.log(JSON.stringify(localStorage.getItem("user")));
 
    localStorage.removeItem("user");
 
-   console.log("AuthService logout(): 'user' removed from localstorage");
-   console.log(JSON.stringify(localStorage.getItem("user")));
 }
 
 /**
@@ -59,7 +54,7 @@ export const logout = () => {
  * Requires: username, email, password
  */
 export const signup = async (email: string, username: string, password: string) => {
-   const response = await fetch(API_URL + "signup", {
+   const response = await fetch(API_URL + "register", {
       method: 'POST',
       headers: {
          "Accept": "application/json",
@@ -76,6 +71,8 @@ export const signup = async (email: string, username: string, password: string) 
    if (!response) {
       throw new Error("HTTP - SIGNUP FAILED - AuthService.signup()");
    }
+
+   
 }
 
 /**
@@ -86,8 +83,6 @@ export const getCurrentUser = async () => {
    const userStr = localStorage.getItem("user");
 
    if (userStr) {
-      console.log(JSON.parse(localStorage.getItem("user") || '{}'));
-
       return JSON.parse(userStr || '{}');
    }
 

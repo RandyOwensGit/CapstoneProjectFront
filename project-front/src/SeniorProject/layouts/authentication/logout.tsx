@@ -1,7 +1,12 @@
-import { logout as AuthServiceLogout } from "../../services/auth.service"
+import { logout as AuthServiceLogout } from "../../services/AuthService"
 
 
-// Login form
+/**
+ * Logout Component
+ * Logs Users Out
+ * @returns React Component for Logging Out
+ */
+
 export const Logout = () => {
 
    AuthServiceLogout();
@@ -13,7 +18,7 @@ export const Logout = () => {
          className="d-flex justify-content-center" 
          style={{ marginTop: '3rem' }}
       >
-         Hopefully you have been logged out
+         <h2>You have been logged out</h2>
       </div>
 
 
