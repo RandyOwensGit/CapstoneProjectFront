@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import { logout as AuthServiceLogout } from "../../services/AuthService"
+import { useEffect, useState } from "react";
 
 
 /**
@@ -9,7 +11,8 @@ import { logout as AuthServiceLogout } from "../../services/AuthService"
 
 export const Logout = () => {
 
-   AuthServiceLogout();
+   // user can only click logout if they are logged in @ Navbar
+   localStorage.removeItem("user");
 
    return (
 
@@ -18,7 +21,10 @@ export const Logout = () => {
          className="d-flex justify-content-center" 
          style={{ marginTop: '3rem' }}
       >
+
+
          <h2>You have been logged out</h2>
+
       </div>
 
 

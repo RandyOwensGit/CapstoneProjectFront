@@ -3,7 +3,7 @@
  * 
  */
 
-const API_URL = 'https://senior-project-back.onrender.com/api/user/';
+const API_URL = 'http://localhost:8080/api/user/';
 
 // login post method
 export const login = async (username: string, password: string) => {
@@ -20,12 +20,14 @@ export const login = async (username: string, password: string) => {
       })
    });
 
-   console.log("Login Response: " + response);
-
    // check if there is a response
    if (!response) {
       throw new Error('LOGIN ERROR - NO HTTP LOGIN REPONSE');
       
+   }
+
+   if (response.status === 401) {
+      return 401;
    }
  
    // turn response into json
@@ -81,7 +83,7 @@ export const register = async (email: string, username: string, password: string
 
 /**
  * 
- *
+ * 
  */
 export const getCurrentUser = async () => {
    const userStr = localStorage.getItem("user");
@@ -91,9 +93,5 @@ export const getCurrentUser = async () => {
    }
 
    return null;
-}
-
-export const checkForCurrentUser = async () => {
-   
 }
 

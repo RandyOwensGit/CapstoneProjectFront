@@ -15,9 +15,6 @@ export const BookDisplay: React.FC<{ book: BookModel, callback: any }> = (props)
    const onClick = (event: React.MouseEvent<HTMLElement>) => {
       event.preventDefault();
 
-      console.log("Inside onClick() ---");
-      console.log(props.book);
-
       props.callback(props.book);
    }
 

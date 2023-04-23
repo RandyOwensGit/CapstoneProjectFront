@@ -12,8 +12,6 @@ import { Login } from './SeniorProject/layouts/authentication/login';
 import { Register } from './SeniorProject/layouts/authentication/register';
 import { UserProfile } from './SeniorProject/layouts/Userpage/Profile';
 import { Logout } from './SeniorProject/layouts/authentication/logout';
-import { UserAddBook } from './SeniorProject/layouts/AddBook/UserAddBook';
-import BookModel from './SeniorProject/models/BookModel';
 
 /**
  * Handles Routing

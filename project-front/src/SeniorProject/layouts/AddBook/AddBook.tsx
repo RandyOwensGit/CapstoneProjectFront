@@ -38,11 +38,7 @@ export const AddBook = () => {
 
    // Rendering UserAddBooks component with selected book from BookDisplay loop
    async function userSelectedBook(book: BookModel) {
-      // send values to database
-
-      console.log("Inside userSelectBook() ---");
-      console.log(book);
-
+      
       setBook(book);
       setDisplayAddPage(true);
 

@@ -1,76 +1,103 @@
 import { Link } from "react-router-dom";
 import { Card, Col, Container, ListGroup, Row } from "react-bootstrap";
 import img from "../../../assets/profilepic.jpg"
+import { useEffect, useState } from "react";
+import { getCurrentUser } from "../../services/AuthService";
 
 
 // User Profile Page
 export const UserProfile: React.FC = () => {
 
-   const formattedUser = JSON.parse(localStorage.getItem("user") || '{}');
+   const [loggedIn, setLoggedIn] = useState(false);
+   const [formattedUser, setFormattedUser] = useState(JSON.parse(localStorage.getItem("user") || '{}'));
 
-   if (!formattedUser) {
-      return (
-         <div
-            className="d-flex justify-content-center"
-            style={{ marginTop: "3rem" }}
-         >
-            <h2>You need to <Link to="/seniorproject/login" >sign in</Link> before you can access this page.</h2>
-         </div>
-      )
-   }
+   useEffect(() => {
+
+      if (localStorage.getItem("user") !== null) {
+         setLoggedIn(true);
+
+      } else {
+         setLoggedIn(false);
+
+      }
+
+   }, [loggedIn]);
 
    return (
+      <div>
 
-      <Container 
-         style={{ marginTop: "5rem", height: "100%", width: "100%" }}
-      >
-         <Row>
+         {/* Checked if Logged in */}
+         {
+            (loggedIn)
+               ?
 
-            <Col
-               sm={4}
-               className=""
-               style={{
-
-               }}
-            >
-               <Card 
-                  bg="primary" 
-                  style={{
-                     width: '18rem',
-                  }}
+               // Logged In
+               <Container
+                  style={{ marginTop: "5rem", height: "100%", width: "100%" }}
                >
+                  <Row>
 
-                  <Card.Img 
-                     variant="top" 
-                     src={img} 
-                  />
+                     <Col
+                        sm={4}
+                        className=""
+                        style={{
 
-                  <Card.Body>
-                     <Card.Title className="text-center">
-                        <h2>{formattedUser.username} Profile</h2>
-                     </Card.Title>
-                     Email: {formattedUser.email}
-                     Date Created: {formattedUser.dateCreated.substring(0, 10)}
-                  </Card.Body>
+                        }}
+                     >
+                        <Card
+                           bg="primary"
+                           style={{
+                              width: '18rem',
+                           }}
+                        >
 
-               </Card>
+                           <Card.Img
+                              variant="top"
+                              src={img}
+                           />
 
-            </Col>
+                           <Card.Body>
+                              <Card.Title className="text-center">
+                                 <h2>{formattedUser.username} Profile</h2>
+                              </Card.Title>
+                              Email: {formattedUser.email}
+                              <div>
+                                 Date Created: {formattedUser.dateCreated.substring(0, 10)}
+                              </div>
+                           </Card.Body>
 
-            <Col
-               sm={8}
-               className=""
-               style={{
+                        </Card>
 
-               }}
-            >
+                     </Col>
 
-            </Col>
+                     <Col
+                        sm={8}
+                        className=""
+                        style={{
 
-         </Row>
+                        }}
+                     >
+
+                     </Col>
+
+                  </Row>
 
 
-      </Container>
+               </Container>
+
+
+               :
+               // Not Logged In
+               <div
+                  className="d-flex justify-content-center"
+                  style={{ marginTop: "3rem" }}
+               >
+                  <h2>You need to <Link to="/seniorproject/login" >sign in</Link> before you can access this page.</h2>
+               </div>
+
+         }
+
+      </div>
 
 
    )

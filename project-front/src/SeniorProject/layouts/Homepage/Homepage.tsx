@@ -1,5 +1,4 @@
 import { useState } from "react";
-import userService from "../../services/UserService";
 
 /**
  * 
@@ -8,15 +7,6 @@ import userService from "../../services/UserService";
 
 export const Homepage = () => {
 
-   // testing const to display content
-   const [content, setContent] = useState();
-
-   async function contentSet() {
-      const response = await userService.getPublicContent();
-
-      // set content to response
-      setContent(response);
-   }
 
    return (
       
@@ -27,7 +17,7 @@ export const Homepage = () => {
       >
 
          <header className="jumbotron">
-            <h2>{content}</h2>
+            <h2></h2>
          </header>
 
       </div>

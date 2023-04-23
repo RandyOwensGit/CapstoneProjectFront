@@ -1,9 +1,38 @@
 import { Container, Row, Col, Button, Form, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import BookModel from "../../models/BookModel";
+import { InputHandler } from "./InputHandler";
+import { useState } from "react";
+import { read_state } from "../../models/ReadStateEnum";
+import { addRead } from "../../services/ReadsService";
 
 
 export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
+
+   const [readStateValue, setReadStateValue] = useState<read_state>(read_state.NOT_STARTED);
+   const [pagesRead, setPagesRead] = useState(0);
+   const [customPageCount, setCustomPageCount] = useState(false);
+   const [totalPages, setTotalPages] = useState(props.book.pageCount);
+   const [customDateStart, setCustomDateStart] = useState(false);
+   const [customDateFinished, setCustomDateFinished] = useState(false);
+   const [customPageTotal, setCustomPageTotal] = useState(0);
+
+   const initialState = {
+      setReadStateValue,
+      setCustomDateStart,
+      setCustomDateFinished,
+   }
+
+   const onSelectCustomPages = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+      if (customPageCount) {
+         setCustomPageCount(false);
+
+      } else {
+         setCustomPageCount(true);
+      }
+
+   }
 
    // need to get user
    const formattedUser = JSON.parse(localStorage.getItem("user") || '{}');
@@ -23,6 +52,21 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
    const bookString = JSON.stringify(props.book);
 
    const formattedBook = JSON.parse(bookString);
+
+   // get handlers 
+   const {
+      onChange,
+      getCustomStartDate,
+      getCustomFinishDate,
+      onSubmit,
+   } = InputHandler(addUserRead, initialState);
+
+   // function to execute on form submit
+   async function addUserRead() {
+
+      addRead(props.book.googleId, readStateValue, totalPages, pagesRead);
+
+   }
 
    return (
 
@@ -44,7 +88,7 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
 
                   <Image src={formattedBook.image} rounded height="250px" />
 
-                  <p style={{marginTop: "1rem", marginBottom: 0}}>Author(s):</p> {" "}
+                  <p style={{ marginTop: "1rem", marginBottom: 0 }}>Author(s):</p> {" "}
                   { // Check if more than 1 author
                      (props.book.author.length > 1)
                         ?
@@ -55,7 +99,7 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
                   }
                   <br />
 
-                  <p style={{ fontWeight: "normal" }}> 
+                  <p style={{ fontWeight: "normal" }}>
                      {props.book.description}
                   </p>
 
@@ -74,7 +118,7 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
                <div className="">
 
                   <Form
-                     // onSubmit={() => }
+                     // onSubmit={onSubmit}
                      className="p-3"
                      style={{ height: "100%", width: "100%", textAlign: "center" }}
                   >
@@ -82,46 +126,123 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
                      <h4>Enter & Confirm Book Details:</h4>
                      <p style={{ fontWeight: "normal" }}><em>Due to books often having many different editions you may fit the page count to fit your copy.</em></p>
 
+                     {/* Select read_state */}
                      <Form.Group>
 
-                        <Form.Control
-                           name="username"
-                           id="username"
-                           type="text"
-                           placeholder="Username"
-                           style={{ width: '30rem' }}
-                           className="mx-auto"
+                        <Form.Select
+                           id="readStateValue"
+                           name="readStateValue"
+                           aria-label="Book Progress"
+                           onChange={onChange}
+                           style={{ width: "20rem" }}
                            required
-                        />
-
-                        <Form.Text className="text-muted">
-
-                        </Form.Text>
+                           className="mx-auto"
+                        >
+                           <option>Select Book Progress to Continue</option>
+                           <option value={read_state.NOT_STARTED}>Not Started</option>
+                           <option value={read_state.READING}>Currently Reading</option>
+                           <option value={read_state.FINISHED}>Finished</option>
+                        </Form.Select>
 
                      </Form.Group>
+                     {/* End Select read_state */}
 
-                     <Form.Group>
 
-                        <Form.Control
-                           name="password"
-                           id="password"
-                           type="password"
-                           placeholder="Password"
-                           style={{ width: '30rem', marginTop: '1.5rem' }}
+                     {/* If user is READING then ask for what page */}
+                     {
+                        (readStateValue === 1)
+                           ?
+                           <Form.Group style={{ marginTop: "2rem" }}>
+                              <Form.Control
+                                 name="pagesRead"
+                                 id="pagesRead"
+                                 type="text"
+                                 placeholder="# of Pages Read (Not Required)"
+                                 onChange={((e) => setPagesRead(parseInt(e.target.value)))}
+                                 style={{ width: '20rem' }}
+                                 className="mx-auto"
+                              />
+                           </Form.Group>
+                           : null
+                     }
+                     {/* End Get Pages */}
+
+
+                     {/* If user is READING or FINISHED then ask for start date */}
+                     {
+                        (readStateValue === 1 || readStateValue === 2)
+                           ?
+                           <Form.Group style={{ marginTop: "2rem" }}>
+                              <Form.Label>Start Date (Not Required)</Form.Label>
+                              <Form.Control
+                                 name="startDate"
+                                 id="startDate"
+                                 type="date"
+                                 placeholder="Start Date (Not Required)"
+                                 onChange={getCustomStartDate}
+                                 style={{ width: '20rem' }}
+                                 className="mx-auto"
+                              />
+                           </Form.Group>
+                           : null
+                     }
+                     {/* End Start Date */}
+
+
+                     {/* If user is FINISHED then ask for end date */}
+                     {
+                        (readStateValue === 2)
+                           ?
+                           <Form.Group style={{ marginTop: "2rem" }}>
+                              <Form.Label>Finished Date (Not Required)</Form.Label>
+                              <Form.Control
+                                 name="pagesRead"
+                                 id="pagesRead"
+                                 type="date"
+                                 placeholder="Finished Date (Not Required)"
+                                 onChange={getCustomFinishDate}
+                                 style={{ width: '20rem' }}
+                                 className="mx-auto"
+                              />
+                           </Form.Group>
+                           : null
+                     }
+                     {/* End End Date */}
+
+
+                     {/* Checkbox for showing custom page total */}
+                     <Form.Group style={{ marginTop: "2rem" }}>
+                        <Form.Check
+                           name="pickCustomPageTotal"
+                           id="pickCustomPageTotal"
+                           label="Custom Total Page?"
+                           onChange={onSelectCustomPages}
+                           style={{ width: '20rem' }}
                            className="mx-auto"
-                           required
                         />
-
-                        <Form.Text className="text-muted">
-
-                        </Form.Text>
-
                      </Form.Group>
+
+                     {
+                        (customPageCount)
+                           ?
+                           <Form.Group style={{ marginTop: "1rem" }}>
+                              <Form.Control
+                                 name="customPageTotal"
+                                 id="customPageTotal"
+                                 type="text"
+                                 placeholder="Total Pages in Your Book"
+                                 onChange={((e) => setTotalPages(parseInt(e.target.value)))}
+                                 style={{ width: '20rem' }}
+                                 className="mx-auto"
+                              />
+                           </Form.Group>
+                           : null
+                     }
 
                      <Button
                         variant="primary"
                         type="submit"
-                        style={{ width: '30rem', marginTop: '1rem' }}
+                        style={{ width: '20rem', marginTop: '2rem' }}
                      >
                         Submit
                      </Button>
@@ -136,9 +257,11 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
          </Row>
 
 
-      </Container>
+      </Container >
 
 
    );
 
 }
+
+export { read_state };
