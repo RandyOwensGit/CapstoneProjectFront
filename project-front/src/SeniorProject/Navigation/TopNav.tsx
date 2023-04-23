@@ -12,22 +12,38 @@ export const TopNav = () => {
 
    return (
 
-      <div className="rounded">
+      <div className="rounded customFont">
 
          {/* Navbar Creation */}
          <Navbar className="bg-primary">
-            <Container fluid className="mb-2" style={{ maxHeight: '100px', minHeight: '50px' }}>
+            <Container 
+               fluid 
+               className="mb-2 fs-3" 
+               style={{ 
+                  maxHeight: '100px', 
+                  minHeight: '50px' 
+               }}
+            >
 
                <Nav>
-               <Nav.Link>
-                     <Link to="/SeniorProject/login" className="nav-link text-secondary" aria-current="page">
-                        <b>Login</b>
+                  <Nav.Link>
+                     <Link 
+                        to="/SeniorProject/login" 
+                        className="nav-link text-light linkHover" 
+                        aria-current="page"
+                        style={{ marginRight: '1rem' }}
+                     >
+                        Login
                      </Link>
                   </Nav.Link>
 
                   <Nav.Link>
-                     <Link to="/SeniorProject/logout" className="nav-link text-secondary" aria-current="page">
-                        <b>Logout</b>
+                     <Link 
+                        to="/SeniorProject/logout" 
+                        className="nav-link text-light linkHover" 
+                        aria-current="page"
+                     >
+                        Logout
                      </Link>
                   </Nav.Link>
                </Nav>
@@ -37,18 +53,28 @@ export const TopNav = () => {
                {/* TODO: Add Collapse for responsive screen size */}
                <Nav className="d-flex">
                   <Nav.Link>
-                     <Link to="/SeniorProject/" className="nav-link text-secondary" aria-current="page">
-                        <b>Home</b>
+                     <Link 
+                        to="/SeniorProject/" 
+                        className="nav-link text-light linkHover" 
+                        aria-current="page"
+                        style={{ marginRight: '1rem' }}
+                     >
+                        Home
                      </Link>
                   </Nav.Link>
 
                   <Nav.Link>
-                     <Link to="/SeniorProject/Profile" className="nav-link text-secondary" aria-current="page">
-                        <b>Profile</b>
+                     <Link 
+                        to="/SeniorProject/Profile" 
+                        className="nav-link text-light linkHover" 
+                        aria-current="page"
+                        style={{ marginRight: '1rem' }}
+                  >
+                        Profile
                      </Link>
                   </Nav.Link>
 
-                  <Nav.Link>
+                  {/* <Nav.Link>
                      <Link to="/SeniorProject/Inserts" className="nav-link text-secondary" aria-current="page">
                         <b>Inserts</b>
                      </Link>
@@ -58,11 +84,15 @@ export const TopNav = () => {
                      <Link to="/SeniorProject/Tables" className="nav-link text-secondary" aria-current="page">
                         <b>Tables</b>
                      </Link>
-                  </Nav.Link>
+                  </Nav.Link> */}
 
                   <Nav.Link>
-                     <Link to="/SeniorProject/AddBook" className="nav-link text-secondary" aria-current="page">
-                        <b>Add Book</b>
+                     <Link 
+                        to="/SeniorProject/AddBook" 
+                        className="nav-link text-light linkHover" 
+                        aria-current="page"
+                     >
+                        Add Book
                      </Link>
                   </Nav.Link>
                </Nav>

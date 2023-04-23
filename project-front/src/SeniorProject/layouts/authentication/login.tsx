@@ -43,45 +43,75 @@ export const Login = () => {
          style={{ marginTop: '3rem' }}
       >
 
-         <Form onSubmit={loginHandler} >
-
-            <Form.Group>
-
-               <FloatingLabel label="username">
-                  <Form.Control
-                     name="username"
-                     id="username"
-                     type="text"
-                     placeholder="Username"
-                     style={{ width: '30rem' }}
-                     required
-                  />
-               </FloatingLabel>
-
-               <FloatingLabel label="password">
-                  <Form.Control
-                     name="password"
-                     id="password"
-                     type="password"
-                     placeholder="Password"
-                     style={{ width: '30rem', marginTop: '3rem' }}
-                     required
-                  />
-               </FloatingLabel>
-
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
-               Submit
-            </Button>
-
-         </Form>
-
          <div>
-            Don't have a profile?
-            <Link to="/SeniorProject/registration" className="nav-link text-secondary" aria-current="page">
-               <b>Sign Up</b>
-            </Link>
+            <Form
+               onSubmit={loginHandler}
+               className="border border-primary"
+            >
+
+               <div className="p-3">
+
+                  <Form.Group>
+
+                     <FloatingLabel label="username">
+                        <Form.Control
+                           name="username"
+                           id="username"
+                           type="text"
+                           placeholder="Username"
+                           style={{ width: '30rem' }}
+                           required
+                        />
+                     </FloatingLabel>
+
+                     <Form.Text className="text-muted">
+
+                     </Form.Text>
+
+                  </Form.Group>
+
+                  <Form.Group>
+
+                     <FloatingLabel label="password">
+                        <Form.Control
+                           name="password"
+                           id="password"
+                           type="password"
+                           placeholder="Password"
+                           style={{ width: '30rem', marginTop: '1.5rem' }}
+                           required
+                        />
+                     </FloatingLabel>
+
+                     <Form.Text className="text-muted">
+
+                     </Form.Text>
+
+                  </Form.Group>
+
+                  <Button
+                     variant="primary"
+                     type="submit"
+                     style={{ width: '30rem', marginTop: '1rem' }}
+                  >
+                     Submit
+                  </Button>
+
+               </div>
+
+            </Form>
+
+            <div>
+               <Link 
+                  to="/SeniorProject/registration" 
+                  className="nav-link text-secondary linkHover" 
+                  aria-current="page"
+                  style={{ marginTop: '1rem' }}
+               >
+                  Don't have an account? <b>Sign Up</b>
+               </Link>
+            </div>
+
          </div>
 
       </div>

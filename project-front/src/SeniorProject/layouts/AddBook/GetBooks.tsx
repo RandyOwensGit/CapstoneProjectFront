@@ -57,6 +57,7 @@ async function apiBooks(search: string) {
                description: responseData[key].volumeInfo.description,
                pageCount: responseData[key].volumeInfo.pageCount,
                author: responseData[key].volumeInfo.authors,
+               googleId: responseData[key].id,
             });
          }
 

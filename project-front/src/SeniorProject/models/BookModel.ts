@@ -13,9 +13,10 @@ class BookModel {
    description: string;
    pageCount: number;
    author: string[];
+   googleId: string;
 
    // Constructor to initialize values
-   constructor (title: string, subTitle: string, image: string, description: string, pageCount: number, author: string[]) {
+   constructor (title: string, subTitle: string, image: string, description: string, pageCount: number, author: string[], googleId: string) {
 
       // initialize values -- ternary operator to format readState
       this.title = title;
@@ -24,6 +25,7 @@ class BookModel {
       this.description = description;
       this.pageCount = pageCount;
       this.author =  author;
+      this.googleId = googleId;
 
    }
 

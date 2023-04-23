@@ -38,8 +38,7 @@ export const SearchBooks = ({callback}: any) => {
 
                {/* Under text tool tip */}
                <Form.Text className="text-muted">
-                  Search (This may be a bit... wonk)
-                  .. Typing fast also may wonk
+                  Search .. Typing fast may be problematic
                </Form.Text>
 
             </Form.Group>

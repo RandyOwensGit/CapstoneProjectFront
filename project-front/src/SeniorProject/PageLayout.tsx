@@ -13,11 +13,16 @@ import "./assets/styles/nav.scss";
 export const PageLayout = () => {
 
    return (
-      <>
+      <div 
+         className="bg-light" 
+         style={{
+            height: "100vh"
+         }}
+      >
          <TopNav />
 
          <Outlet />
-      </>
+      </div>
    );
 
 }

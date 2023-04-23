@@ -1,5 +1,9 @@
 
-// For building token header to be passed to backend API for a verified user
+/**
+ * Get currently logged in user's token to be sent to API
+ * @returns 
+ */
+
 export default function AuthHeader() {
 
    const userStr = localStorage.getItem("user");

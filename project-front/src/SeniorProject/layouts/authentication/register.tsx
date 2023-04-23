@@ -1,6 +1,6 @@
 import { FormEvent } from "react"
 import { Button, FloatingLabel, Form } from "react-bootstrap"
-import { signup as AuthServiceSignup } from "../../services/AuthService";
+import { register as AuthServiceRegister } from "../../services/AuthService";
 import { useNavigate } from "react-router-dom";
 
 /**
@@ -27,13 +27,13 @@ export const Register = () => {
          password: target.password.value,
       };
 
-      
+
       console.log("Register Handler Info: " + data);
 
       // Authorize form data
       // if no error send user to another page
       try {
-         const response = AuthServiceSignup(data.email, data.username, data.password);
+         const response = AuthServiceRegister(data.email, data.username, data.password);
 
          navigate("/seniorproject/login");
 
@@ -49,17 +49,24 @@ export const Register = () => {
    return (
 
       // FORM
-      <div 
-         className="d-flex justify-content-center" 
-         style={{ marginTop: '3rem' }}
+      <div
+         className="d-flex justify-content-center"
+         style={{
+             marginTop: '3rem'
+         }}
       >
 
-         <Form onSubmit={registerHandler} >
+         <Form 
+            onSubmit={registerHandler}
+            className="border border-primary"
+         >
+
+            <div className="p-3">
 
             <Form.Group>
 
-               <FloatingLabel label="email">
-                  <Form.Control 
+               <FloatingLabel label="Email Address">
+                  <Form.Control
                      name="email"
                      id="email"
                      type="email"
@@ -69,33 +76,60 @@ export const Register = () => {
                   />
                </FloatingLabel>
 
-               <FloatingLabel label="username">
-                  <Form.Control 
+               <Form.Text className="text-muted">
+                  Requires @ symbol
+               </Form.Text>
+
+            </Form.Group>
+
+            <Form.Group>
+
+               <FloatingLabel label="Username">
+                  <Form.Control
                      name="username"
                      id="username"
                      type="text"
                      placeholder="Username"
-                     style={{ width: '30rem', marginTop: '3rem' }}
+                     style={{ width: '30rem', marginTop: '1rem' }}
                      required
                   />
                </FloatingLabel>
 
-               <FloatingLabel label="password">
-                  <Form.Control 
+               <Form.Text className="text-muted">
+                  Must be longer than 5 characters
+               </Form.Text>
+
+            </Form.Group>
+
+            <Form.Group>
+
+               <FloatingLabel label="Password">
+                  <Form.Control
                      name="password"
                      id="password"
                      type="password"
                      placeholder="Password"
-                     style={{ width: '30rem', marginTop: '3rem' }}
+                     style={{ width: '30rem', marginTop: '1rem' }}
                      required
                   />
                </FloatingLabel>
 
+               <Form.Text className="text-muted">
+                  Must be longer than 5 characters
+               </Form.Text>
+
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button 
+               variant="primary" 
+               type="submit"
+               className=""
+               style={{ width: '30rem', marginTop: '3rem' }}
+            >
                Submit
             </Button>
+
+            </div>
 
          </Form>
 

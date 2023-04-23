@@ -1,6 +1,6 @@
-import { getCurrentUser as AuthServiceGetCurrentUser, getCurrentUser } from "../../services/AuthService"
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Card, Col, Container, ListGroup, Row } from "react-bootstrap";
+import img from "../../../assets/profilepic.jpg"
 
 
 // User Profile Page
@@ -8,44 +8,69 @@ export const UserProfile: React.FC = () => {
 
    const formattedUser = JSON.parse(localStorage.getItem("user") || '{}');
 
+   if (!formattedUser) {
+      return (
+         <div
+            className="d-flex justify-content-center"
+            style={{ marginTop: "3rem" }}
+         >
+            <h2>You need to <Link to="/seniorproject/login" >sign in</Link> before you can access this page.</h2>
+         </div>
+      )
+   }
+
    return (
 
-      <div
-         className=""
-         style={{ margin: '10rem' }}
+      <Container 
+         style={{ marginTop: "5rem", height: "100%", width: "100%" }}
       >
+         <Row>
 
-         <header className="jumbotron" >
-            <h2><strong>{formattedUser.username}</strong> Profile</h2>
-         </header>
+            <Col
+               sm={4}
+               className=""
+               style={{
 
-         <p>
-            <strong>Token:</strong>{" "}
-            {formattedUser.accessToken}
-         </p>
+               }}
+            >
+               <Card 
+                  bg="primary" 
+                  style={{
+                     width: '18rem',
+                  }}
+               >
 
-         <p>
-            <strong>Id:</strong>{" "}
-            {formattedUser.id}
-         </p>
+                  <Card.Img 
+                     variant="top" 
+                     src={img} 
+                  />
 
-         <p>
-            <strong>Email:</strong>{" "}
-            {formattedUser.email}
-         </p>
+                  <Card.Body>
+                     <Card.Title className="text-center">
+                        <h2>{formattedUser.username} Profile</h2>
+                     </Card.Title>
+                     Email: {formattedUser.email}
+                     Date Created: {formattedUser.dateCreated.substring(0, 10)}
+                  </Card.Body>
 
-         <p>
-            <strong>Authorities:</strong>{" "}
-            {formattedUser.roles && formattedUser.roles.map((role: any, index: any) => <li key={index}>{role}</li>)}
-         </p>
+               </Card>
 
-         <p>
-            <strong>Date Created:</strong>{" "}
-            { formattedUser.dateCreated.substr(0, 10) }
-         </p>
+            </Col>
+
+            <Col
+               sm={8}
+               className=""
+               style={{
+
+               }}
+            >
+
+            </Col>
+
+         </Row>
 
 
-      </div>
+      </Container>
 
 
    )

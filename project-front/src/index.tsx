@@ -13,6 +13,7 @@ import { Register } from './SeniorProject/layouts/authentication/register';
 import { UserProfile } from './SeniorProject/layouts/Userpage/Profile';
 import { Logout } from './SeniorProject/layouts/authentication/logout';
 import { UserAddBook } from './SeniorProject/layouts/AddBook/UserAddBook';
+import BookModel from './SeniorProject/models/BookModel';
 
 /**
  * Handles Routing
@@ -25,32 +26,36 @@ const root = ReactDOM.createRoot(
 );
 root.render(
 
-   <React.StrictMode>
-      <BrowserRouter>
-         {/* Use BrowserRouter to create link to host/SeniorProject */}
-         <Routes>
+   <div className="bg-light customFont">
 
-            <Route path="/" element={<App />} >
-               <Route index element={<App />} />
-               <Route path="*" element={<PageNotFoundError />} />
-            </Route>
+      <React.StrictMode>
+         <BrowserRouter>
+            {/* Use BrowserRouter to create link to host/SeniorProject */}
+            <Routes>
 
-            <Route path="/SeniorProject/" element={<PageLayout />} >
-               <Route index element={<Homepage />} />
-               <Route path="Inserts" element={<Inserts />} />
-               <Route path="Tables" element={<Tables />} />
-               <Route path="AddBook" element={<AddBook />} />
-               <Route path="Profile" element={<UserProfile />} />
-               <Route path="Login" element={<Login />} />
-               <Route path="Registration" element={<Register />} />
-               <Route path="Logout" element={<Logout />} />
-               <Route path="UserAddBook" element={<UserAddBook />} />
-               <Route path="*" element={<PageNotFoundError />} />
-            </Route>
+               <Route path="/" element={<App />} >
+                  <Route index element={<App />} />
+                  <Route path="*" element={<PageNotFoundError />} />
+               </Route>
 
-         </Routes>
-         
-      </BrowserRouter>
-   </React.StrictMode>
+               <Route path="/SeniorProject/" element={<PageLayout />} >
+                  <Route index element={<Homepage />} />
+                  <Route path="Inserts" element={<Inserts />} />
+                  <Route path="Tables" element={<Tables />} />
+                  <Route path="AddBook" element={<AddBook />} />
+                  <Route path="Profile" element={<UserProfile />} />
+                  <Route path="Login" element={<Login />} />
+                  <Route path="Registration" element={<Register />} />
+                  <Route path="Logout" element={<Logout/>} />
+                  <Route path="*" element={<PageNotFoundError />} />
+               </Route>
+
+            </Routes>
+
+         </BrowserRouter>
+      </React.StrictMode>
+
+   </div>
 
 );
+

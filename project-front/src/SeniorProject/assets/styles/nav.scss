@@ -1,6 +1,7 @@
 /* Website Colors override Bootstrap */
-$primary: #FBEEC1;
-$secondary: #8D8741;
+$primary: #924553;
+$secondary: black;
+$light: #F8EEE7;
 
 .bookCard {
    transition: all 0.4s;
@@ -10,5 +11,40 @@ $secondary: #8D8741;
    transform: scale(1.15);
 }
 
+// link hover
+.linkHover {
+	color: #F8EEE7;
+  position: relative;
+  text-decoration: none;
+}
+
+.linkHover::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background-color: #F8EEE7;
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform .3s ease-in-out;
+}
+
+.linkHover:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@700&family=Fascinate+Inline&family=Montserrat:wght@400;700&display=swap');
+//font-family: 'Catamaran', sans-serif;
+//font-family: 'Montserrat', sans-serif;
+
+
+.customFont {
+   font-family: 'Montserrat', sans-serif;
+   font-weight: 700;
+}
 
 @import '~bootstrap/scss/bootstrap';

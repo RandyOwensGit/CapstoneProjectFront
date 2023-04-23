@@ -20,6 +20,8 @@ export const login = async (username: string, password: string) => {
       })
    });
 
+   console.log("Login Response: " + response);
+
    // check if there is a response
    if (!response) {
       throw new Error('LOGIN ERROR - NO HTTP LOGIN REPONSE');
@@ -53,7 +55,7 @@ export const logout = () => {
  * Pass signup info to backend API
  * Requires: username, email, password
  */
-export const signup = async (email: string, username: string, password: string) => {
+export const register = async (email: string, username: string, password: string) => {
    const response = await fetch(API_URL + "register", {
       method: 'POST',
       headers: {
@@ -67,6 +69,8 @@ export const signup = async (email: string, username: string, password: string) 
       })
    });
 
+   console.log("Register Response: " + response);
+
    // check for error
    if (!response) {
       throw new Error("HTTP - SIGNUP FAILED - AuthService.signup()");
@@ -76,8 +80,8 @@ export const signup = async (email: string, username: string, password: string) 
 }
 
 /**
- * Pass signup info to backend API
- * Requires: username, email, password
+ * 
+ *
  */
 export const getCurrentUser = async () => {
    const userStr = localStorage.getItem("user");
@@ -87,5 +91,9 @@ export const getCurrentUser = async () => {
    }
 
    return null;
+}
+
+export const checkForCurrentUser = async () => {
+   
 }
 
