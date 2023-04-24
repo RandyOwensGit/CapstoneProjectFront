@@ -3,7 +3,7 @@
  * 
  */
 
-const API_URL = 'http://localhost:8080/api/user/';
+const API_URL = 'https://senior-project-back.onrender.com/api/user/';
 
 // login post method
 export const login = async (username: string, password: string) => {
@@ -71,11 +71,13 @@ export const register = async (email: string, username: string, password: string
       })
    });
 
-   console.log("Register Response: " + response);
-
    // check for error
    if (!response) {
       throw new Error("HTTP - SIGNUP FAILED - AuthService.signup()");
+   }
+
+   if (response.status === 400) {
+      return 400;
    }
 
    

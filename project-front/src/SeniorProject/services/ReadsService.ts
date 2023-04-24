@@ -5,7 +5,7 @@
 
 import { read_state } from "../models/ReadStateEnum";
 
-const API_URL = 'https://localhost:8080/api/reads';
+const API_URL = 'https://senior-project-back.onrender.com/api/reads';
 
 
 /**
@@ -13,13 +13,16 @@ const API_URL = 'https://localhost:8080/api/reads';
  * Requires: username, email, password
  */
 export const addRead = async (
-   google_id: string, 
-   read_state: read_state, 
-   total_pages: number,
-   pages_read?: number,
-   date_started?: Date,
-   date_ended?: Date,
+   googleBookId: string, 
+   readState: read_state, 
+   totalPages: number,
+   pagesRead?: number,
+   dateStarted?: Date,
+   dateEnded?: Date,
 ) => {
+
+   // convert the logged in user to a JSON Object - need user_id
+   const getUserId = JSON.parse(localStorage.getItem("user") || '{}');
 
    const response = await fetch(API_URL, {
       method: 'POST',
@@ -28,16 +31,19 @@ export const addRead = async (
          "content-type": "application/json",
       },
       body: JSON.stringify({
-         google_id: google_id,
-         read_state: read_state,
-         total_pages: total_pages,
-         pages_read: pages_read,
-         date_started: date_started,
-         date_ended: date_ended,
+         googleBookId: googleBookId,
+         readState: readState,
+         totalPages: totalPages,
+         pagesRead: pagesRead,
+         dateStarted: dateStarted,
+         dateEnded: dateEnded,
+         userAccount: getUserId.userId,
       })
    });
 
-   console.log("Register Response: " + response);
+   console.log("Register Response: ");
+   console.log(response);
+   console.log(JSON.stringify(response));
 
    // check for error
    if (!response) {

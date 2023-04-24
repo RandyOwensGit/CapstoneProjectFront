@@ -6,27 +6,26 @@
 
 import { read_state } from "./ReadStateEnum";
 
-
 class ReadModel {
 
    // test_table column mapping
-   google_id: string;
-   read_state: read_state;
-   total_pages: number;
-   pages_read?: number;
-   date_started?: Date;
-   date_ended?: Date;
+   googleBookId: string;
+   readState: read_state;
+   totalPages: number;
+   pagesRead?: number;
+   dateStarted?: Date;
+   dateEnded?: Date;
 
    // Constructor to initialize values
-   constructor (google_id: string, read_state: read_state, total_pages: number, pages_read?: number, date_started?: Date, date_ended?: Date) {
+   constructor (googleBookId: string, readState: read_state, totalPages: number, pagesRead?: number, dateStarted?: Date, dateEnded?: Date) {
 
       // initialize values -- ternary operator to format readState
-      this.google_id = google_id;
-      this.read_state = read_state;
-      this.total_pages = total_pages;
-      this.pages_read = pages_read;
-      this.date_started = date_started;
-      this.date_ended = date_ended;
+      this.googleBookId = googleBookId;
+      this.readState = readState;
+      this.totalPages = totalPages;
+      this.pagesRead = pagesRead;
+      this.dateStarted = dateStarted;
+      this.dateEnded = dateEnded;
 
    }
 
