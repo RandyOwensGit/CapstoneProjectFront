@@ -3,7 +3,7 @@
  * 
  */
 
-const API_URL = 'http://localhost:8080/api/user/';
+const API_URL = 'https://senior-project-back.onrender.com/api/user/';
 
 // login post method
 export const login = async (username: string, password: string) => {

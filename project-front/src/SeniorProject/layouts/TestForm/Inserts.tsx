@@ -24,7 +24,7 @@ export function Inserts() {
       // send values to database
 
       // POST FORM DATA
-      await fetch('http://localhost:8080/api/tests', {
+      await fetch('https://senior-project-back.onrender.com/api/tests', {
          method: 'POST',
          headers: {
             'Accept': 'application/json',
