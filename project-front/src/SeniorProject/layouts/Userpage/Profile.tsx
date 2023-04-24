@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
-import { Card, Col, Container, ListGroup, Row } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import img from "../../../assets/profilepic.jpg"
 import { useEffect, useState } from "react";
-import { getCurrentUser } from "../../services/AuthService";
 
+/**
+ * Profile Page
+ * @returns Profile Page Component
+ */
 
 // User Profile Page
 export const UserProfile: React.FC = () => {

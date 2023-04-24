@@ -7,7 +7,7 @@ import "./assets/styles/nav.scss";
 /**
  * Holds Page layouts in accordance with Routing inside App.tsx
  * Outlet displays routed page
- * @returns component
+ * @returns routing component layout
  */
 
 export const PageLayout = () => {

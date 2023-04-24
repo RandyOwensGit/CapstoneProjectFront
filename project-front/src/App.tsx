@@ -7,9 +7,9 @@ import video from './assets/1080.mp4';
 import { Link } from 'react-router-dom';
 
 /**
- * Display Portfolio Homepage
+ * Portfolio Landing Page
  * 
- * @returns component
+ * @returns Portfolio Component
  */
 
 export const App = () => {

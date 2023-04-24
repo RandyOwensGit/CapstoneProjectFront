@@ -1,7 +1,7 @@
 
 /**
- * Get currently logged in user's token to be sent to API
- * @returns 
+ * Builds Bearer Token to be passed for authorization to backend
+ * @returns Formatted Bearer token
  */
 
 export default function AuthHeader() {

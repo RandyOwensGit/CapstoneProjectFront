@@ -29,6 +29,7 @@ root.render(
       <React.StrictMode>
          <BrowserRouter>
             {/* Use BrowserRouter to create link to host/SeniorProject */}
+
             <Routes>
 
                <Route path="/" element={<App />} >

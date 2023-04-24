@@ -1,8 +1,8 @@
-import { useState } from "react";
+
 
 /**
- * 
- * @returns 
+ * Currently Nothing
+ * @returns Landing Page Component
  */
 
 export const Homepage = () => {

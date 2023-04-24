@@ -1,17 +1,17 @@
-
-/**
- * 
- */
-
 import { read_state } from "../models/ReadStateEnum";
 
 const API_URL = 'https://senior-project-back.onrender.com/api/reads';
 
 
 /**
- * Pass signup info to backend API
- * Requires: username, email, password
+ * Handling communication for user reads
+ * 
+ * @function addRead
+ * @function Read
+ * @function getReads
+ * 
  */
+
 export const addRead = async (
    googleBookId: string, 
    readState: read_state, 

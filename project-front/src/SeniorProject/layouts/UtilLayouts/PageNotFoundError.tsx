@@ -2,7 +2,7 @@
 /**
  * Page not found display
  * 
- * @returns component
+ * @returns Page Not Found Component
  */
 
 export const PageNotFoundError = () => {

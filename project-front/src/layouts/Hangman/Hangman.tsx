@@ -6,6 +6,8 @@ import { HangmanDrawing } from "./HangmanDrawing";
 import { HangmanWord } from "./HangmanWord";
 import { Keyboard } from "./Keyboard";
 
+
+// Not Relevant towards Senior Project
 function getWord() {
    return wordList[Math.floor(Math.random() * wordList.length)];
 }

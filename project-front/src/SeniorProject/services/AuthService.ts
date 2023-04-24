@@ -1,11 +1,22 @@
 
 /**
+ * Handling communication for authorization
+ * 
+ * @function login
+ * @function logout
+ * @function register
+ * @function getCurrentUser
  * 
  */
 
 const API_URL = 'https://senior-project-back.onrender.com/api/user/';
 
-// login post method
+/**
+ * Login POST Request
+ * @param username
+ * @param password 
+ * @returns JSONinfied response or numeric HTTP code
+ */
 export const login = async (username: string, password: string) => {
 
    // POST data
@@ -45,7 +56,7 @@ export const login = async (username: string, password: string) => {
 }
 
 /**
- * Remove the user token from local storage
+ * Removes localStorage("user")
  */
 export const logout = () => {
 
@@ -54,8 +65,10 @@ export const logout = () => {
 }
 
 /**
- * Pass signup info to backend API
- * Requires: username, email, password
+ * Register POST request
+ * @param username
+ * @param password 
+ * @returns JSONinfied response or numeric HTTP code
  */
 export const register = async (email: string, username: string, password: string) => {
    const response = await fetch(API_URL + "register", {
@@ -84,8 +97,8 @@ export const register = async (email: string, username: string, password: string
 }
 
 /**
- * 
- * 
+ * Checks and returns current user in local storage
+ * @returns localStorage item
  */
 export const getCurrentUser = async () => {
    const userStr = localStorage.getItem("user");

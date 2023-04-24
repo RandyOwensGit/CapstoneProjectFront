@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import '../../App.scss';
 
+// Not Relevant towards Senior Project
 function HomePage() {
 
    return (
