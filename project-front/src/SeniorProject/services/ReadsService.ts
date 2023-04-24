@@ -5,7 +5,7 @@
 
 import { read_state } from "../models/ReadStateEnum";
 
-const API_URL = 'https://senior-project-back.onrender.com/api/reads';
+const API_URL = 'http://localhost:8080/api/reads';
 
 
 /**

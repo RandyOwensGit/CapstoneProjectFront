@@ -1,7 +1,3 @@
-import { Link } from "react-router-dom";
-import { logout as AuthServiceLogout } from "../../services/AuthService"
-import { useEffect, useState } from "react";
-
 
 /**
  * Logout Component

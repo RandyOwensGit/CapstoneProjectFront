@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react"
-import { Button, Col, Container, FloatingLabel, Form, Row, Stack } from "react-bootstrap"
+import { Button, FloatingLabel, Form, } from "react-bootstrap"
 import { register as AuthServiceRegister } from "../../services/AuthService";
 import { useNavigate } from "react-router-dom";
 
