@@ -1,4 +1,4 @@
-import { Accordion, Badge, Col, ProgressBar, Row } from "react-bootstrap";
+import { Accordion, Badge, Col, FloatingLabel, Form, ProgressBar, Row } from "react-bootstrap";
 import { ReadModel } from "../../models/ReadModel";
 import { useEffect, useState } from "react";
 import BookModel from "../../models/BookModel";
@@ -15,6 +15,7 @@ export const UserReadCard: React.FC<{ reads: ReadModel }> = (props) => {
 
    const [book, setBook] = useState<BookModel>();
    const [progress, setProgress] = useState(0);
+   const [currentPage, setCurrentPage] = useState(0);
 
    useEffect(() => {
 
@@ -108,7 +109,10 @@ export const UserReadCard: React.FC<{ reads: ReadModel }> = (props) => {
                <Accordion.Body>
                   <Row>
                      <Col>
-                        Progress: Page {/* Input Box */} 
+                        Page # 
+                        <Form style={{ display: "inline-block", verticalAlign: "baseline", marginLeft: "10px", marginRight: "10px", width: "5rem" }}>
+                           <Form.Control type="number" id="currentPage" placeholder={"" + currentPage} />
+                        </Form>
                         {props.reads.totalPages}
                      </Col>
                   </Row>
