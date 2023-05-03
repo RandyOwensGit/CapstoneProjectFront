@@ -1,54 +1,83 @@
-import { read_state } from "../models/ReadStateEnum";
-
-const API_URL = 'https://senior-project-back.onrender.com/api/reads';
-
+import { ReadModel } from "../models/ReadModel";
 
 /**
  * Handling communication for user reads
  * 
  * @function addRead
- * @function Read
- * @function getReads
+ * @function ... TODO: Get Read by search
+ * @function getReads @returns List of User Reads
  * 
  */
 
-export const addRead = async (
-   googleBookId: string, 
-   readState: read_state, 
-   totalPages: number,
-   pagesRead?: number,
-   dateStarted?: Date,
-   dateEnded?: Date,
-) => {
+const external = "https://senior-project-back.onrender.com/api/";
+const internal = "http://localhost:8080/api/";
+
+export const addRead = async (read: ReadModel) => {
 
    // convert the logged in user to a JSON Object - need user_id
-   const getUserId = JSON.parse(localStorage.getItem("user") || '{}');
+   const user = JSON.parse(localStorage.getItem("user") || '{}');
 
-   const response = await fetch(API_URL, {
+   const userAccountRequest = '' + external + 'userAccounts/' + user.id;
+
+   const response = await fetch('' + external + 'reads', {
       method: 'POST',
+      headers: {
+         "content-type": "application/json",
+      },
+      body: JSON.stringify({
+         googleBookId: read.googleBookId,
+         readState: read.readState,
+         user: userAccountRequest,
+         totalPages: read.totalPages,
+      })
+   });
+
+   // check for error
+   if (!response) {
+      throw new Error("Adding Read Failed. addRead() of ReadsService.ts");
+   }
+
+
+}
+
+// get a single read for user
+
+
+// get all the user reads as list of ReadModel Objects
+export const getReads = async () => {
+
+   // convert logged in user to JSON Object for user_id
+   const user = JSON.parse(localStorage.getItem("user") || '{}');
+
+   // fetch request
+   const response = await fetch(
+      '' + external + 'userAccounts/' + user.id + '/reads', {
+      method: 'GET',
       headers: {
          "Accept": "application/json",
          "content-type": "application/json",
       },
-      body: JSON.stringify({
-         googleBookId: googleBookId,
-         readState: readState,
-         totalPages: totalPages,
-         pagesRead: pagesRead,
-         dateStarted: dateStarted,
-         dateEnded: dateEnded,
-         userAccount: getUserId.userId,
-      })
    });
 
-   console.log("Register Response: ");
-   console.log(response);
-   console.log(JSON.stringify(response));
+   // turn response to json
+   const userReadsJsonList = await response.json();
+
+   const userReads: ReadModel[] = [];
+
+   // push all to list
+   userReadsJsonList._embedded.reads.map((reads: ReadModel) => {
+      userReads.push({
+         googleBookId: reads.googleBookId,
+         readState: reads.readState,
+         totalPages: reads.totalPages,
+      });
+   })
 
    // check for error
    if (!response) {
-      throw new Error("HTTP - SIGNUP FAILED - AuthService.signup()");
+      throw new Error("Fetching Reads Failed. getReads() of ReadsService.ts");
    }
 
-   
+   return userReads;
+
 }

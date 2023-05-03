@@ -1,18 +1,8 @@
-import BookModel from "../../models/BookModel";
+import BookModel from "../models/BookModel";
 
-/**
- * Pull from Google Books API a maximum of 10 results holding props book title
- * 
- * @returns BookModel[] -- Array of BookModel Objects
- */
 
-export const GetBooks = async (search: string) => {
 
-   return await apiBooks(search);
-
-}
-
-async function apiBooks(search: string) {
+export const SearchGoogleBooks = async (search: string) => {
 
    // URL to Google Books Public API -- with search input from user as query
    // Google Books API only allows 40 object reponses -- can iterate over the rest but probably not required
@@ -23,7 +13,7 @@ async function apiBooks(search: string) {
 
    // check if valid response
    if (!response) {
-      throw new Error('ERROR - HTTP RESPONSE INVALID');
+      throw new Error('ERROR - HTTP RESPONSE INVALID: SearchGoogleBooks() in GoogleBooksService.ts');
    }
 
    // create JSON data object from response
@@ -33,7 +23,7 @@ async function apiBooks(search: string) {
    const responseData = responseJson.items;
 
    // Build array of BookModel Objects with required information
-   const responseBooks: BookModel[] = [];
+   const FoundBooksList: BookModel[] = [];
 
    // populate books array IF title actually includes title
    for (const key in responseData) {
@@ -50,7 +40,7 @@ async function apiBooks(search: string) {
             }
 
             // add to books array
-            responseBooks.push({
+            FoundBooksList.push({
                title: responseData[key].volumeInfo.title,
                subTitle: responseData[key].volumeInfo.subtitle,
                image: responseData[key].volumeInfo.imageLinks.smallThumbnail,
@@ -62,11 +52,47 @@ async function apiBooks(search: string) {
          }
 
       } catch (e) {
-         console.error("Required info not obtained Google API.");
+         // Error will skip book - does not have required info
       }
 
    }
 
-   return responseBooks;
+   return FoundBooksList;
+
+}
+
+
+export const GetBookById = async (googleBooksId: string) => {
+
+   // Search Google Books API for specific google book id
+   const url: string = "https://www.googleapis.com/books/v1/volumes/" + googleBooksId;
+
+   // hold fetch response
+   const response = await fetch(url);
+
+   // check if valid response
+   if (!response) {
+      throw new Error('ERROR - HTTP RESPONSE INVALID: GetBookById() in GoogleBooksService.ts');
+   }
+
+   // create JSON data object from response
+   const responseJson = await response.json();
+
+   // seperate data 
+   const responseData = responseJson.volumeInfo;
+
+   // Build BookModel Object
+   const book: BookModel = {
+      title: responseData.title,
+      subTitle: responseData.subtitle,
+      image: responseData.imageLinks.smallThumbnail,
+      description: responseData.description,
+      pageCount: responseData.pageCount,
+      author: responseData.authors,
+      googleId: responseData.id
+   }
+
+   // return populated BookModel Object
+   return book;
 
 }

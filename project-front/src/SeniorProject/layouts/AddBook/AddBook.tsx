@@ -2,10 +2,10 @@ import { useState } from "react";
 import { SearchBooks } from "./SearchBooks";
 import { SearchInfo } from "./SearchInfo";
 import BookModel from "../../models/BookModel";
-import { GetBooks } from "./GetBooks";
 import { BookDisplay } from "./BookDisplay";
 import { Container, Row } from "react-bootstrap";
 import { UserAddBook } from "./UserAddBook";
+import { SearchGoogleBooks } from "../../services/GoogleBooksService";
 
 /**
  * Main component for user searching and adding a book to their tracking
@@ -29,7 +29,7 @@ export const AddBook = () => {
 
       // GetBooks Component handles searching Google Books API
       // returns array of BookModel Objects
-      const foundBooks = await GetBooks(search);
+      const foundBooks = await SearchGoogleBooks(search);
 
       setBooks(foundBooks);
       setTotalItems(foundBooks.length);

@@ -12,6 +12,10 @@ import { Login } from './SeniorProject/layouts/authentication/login';
 import { Register } from './SeniorProject/layouts/authentication/register';
 import { UserProfile } from './SeniorProject/layouts/Userpage/Profile';
 import { Logout } from './SeniorProject/layouts/authentication/logout';
+import { Testing } from './tests/Testing';
+import { SteamCompare } from './SteamComparison/SteamCompare';
+import { TestingDisplay } from './tests/TestingDisplay';
+import { TestingService } from './SeniorProject/services/TestingService';
 
 /**
  * Handles Routing
@@ -46,7 +50,15 @@ root.render(
                   <Route path="Login" element={<Login />} />
                   <Route path="Registration" element={<Register />} />
                   <Route path="Logout" element={<Logout/>} />
+                  <Route path="Testing" element={<Testing />} />
+                  <Route path="TestingService" element={<TestingService />} />
+                  <Route path="TestingDisplay" element={<TestingDisplay />} />
                   <Route path="*" element={<PageNotFoundError />} />
+               </Route>
+
+               <Route path="/SteamCompare/" element={<SteamCompare />} >
+                  <Route index element={<SteamCompare />} />
+                  <Route path="*" element={<SteamCompare />} />
                </Route>
 
             </Routes>

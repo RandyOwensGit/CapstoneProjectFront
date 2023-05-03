@@ -35,8 +35,8 @@ export const TopNav = () => {
                fluid
                className="mb-2 fs-3"
                style={{
-                  maxHeight: '100px',
-                  minHeight: '50px'
+                  maxHeight: '40px',
+                  minHeight: '40px'
                }}
             >
 

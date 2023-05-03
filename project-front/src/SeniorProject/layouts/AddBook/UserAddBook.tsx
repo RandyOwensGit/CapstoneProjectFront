@@ -3,24 +3,25 @@ import { Link } from "react-router-dom";
 import BookModel from "../../models/BookModel";
 import { InputHandler } from "./InputHandler";
 import { useState } from "react";
-import { read_state } from "../../models/ReadStateEnum";
+import { ReadState } from "../../models/ReadStateEnum";
 import { addRead } from "../../services/ReadsService";
+import { ReadModel } from "../../models/ReadModel";
 
 
 export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
 
-   const [readStateValue, setReadStateValue] = useState<read_state>(read_state.NOT_STARTED);
-   const [pagesRead, setPagesRead] = useState(0);
+   const [readStateValue, setReadStateValue] = useState<ReadState>(ReadState.not_started);
+   // const [pagesRead, setPagesRead] = useState(0);
    const [customPageCount, setCustomPageCount] = useState(false);
    const [totalPages, setTotalPages] = useState(props.book.pageCount);
-   const [customDateStart, setCustomDateStart] = useState(false);
-   const [customDateFinished, setCustomDateFinished] = useState(false);
-   const [customPageTotal, setCustomPageTotal] = useState(0);
+   // const [customDateStart, setCustomDateStart] = useState(false);
+   // const [customDateFinished, setCustomDateFinished] = useState(false);
+   // const [customPageTotal, setCustomPageTotal] = useState(0);
 
    const initialState = {
       setReadStateValue,
-      setCustomDateStart,
-      setCustomDateFinished,
+      // setCustomDateStart,
+      // setCustomDateFinished,
    }
 
    const onSelectCustomPages = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,15 +57,23 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
    // get handlers 
    const {
       onChange,
-      getCustomStartDate,
-      getCustomFinishDate,
+      // getCustomStartDate,
+      // getCustomFinishDate,
       onSubmit,
    } = InputHandler(addUserRead, initialState);
 
    // function to execute on form submit
    async function addUserRead() {
 
-      addRead(props.book.googleId, readStateValue, totalPages, pagesRead);
+      console.log("Sending to addRead function... ");
+
+      const read: ReadModel = ({
+         googleBookId: props.book.googleId,
+         readState: ReadState[readStateValue],
+         totalPages: totalPages,
+      });
+
+      addRead(read);
 
    }
 
@@ -97,9 +106,10 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
                         ))
                         : <p style={{ margin: 0, padding: 0 }}>By {props.book.author}</p>
                   }
-                  <br />
 
                   <p style={{ fontWeight: "normal" }}>
+                     {"Pages: "} {props.book.pageCount}
+                     <br /><br />
                      {props.book.description}
                   </p>
 
@@ -118,7 +128,7 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
                <div className="">
 
                   <Form
-                     // onSubmit={onSubmit}
+                     onSubmit={onSubmit}
                      className="p-3"
                      style={{ height: "100%", width: "100%", textAlign: "center" }}
                   >
@@ -139,9 +149,9 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
                            className="mx-auto"
                         >
                            <option>Select Book Progress to Continue</option>
-                           <option value={read_state.NOT_STARTED}>Not Started</option>
-                           <option value={read_state.READING}>Currently Reading</option>
-                           <option value={read_state.FINISHED}>Finished</option>
+                           <option value={ReadState.not_started}>Not Started</option>
+                           <option value={ReadState.reading}>Currently Reading</option>
+                           <option value={ReadState.finished}>Finished</option>
                         </Form.Select>
 
                      </Form.Group>
@@ -149,7 +159,7 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
 
 
                      {/* If user is READING then ask for what page */}
-                     {
+                     {/* {
                         (readStateValue === 1)
                            ?
                            <Form.Group style={{ marginTop: "2rem" }}>
@@ -164,12 +174,12 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
                               />
                            </Form.Group>
                            : null
-                     }
+                     } */}
                      {/* End Get Pages */}
 
 
                      {/* If user is READING or FINISHED then ask for start date */}
-                     {
+                     {/* {
                         (readStateValue === 1 || readStateValue === 2)
                            ?
                            <Form.Group style={{ marginTop: "2rem" }}>
@@ -185,12 +195,12 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
                               />
                            </Form.Group>
                            : null
-                     }
+                     } */}
                      {/* End Start Date */}
 
 
                      {/* If user is FINISHED then ask for end date */}
-                     {
+                     {/* {
                         (readStateValue === 2)
                            ?
                            <Form.Group style={{ marginTop: "2rem" }}>
@@ -206,7 +216,7 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
                               />
                            </Form.Group>
                            : null
-                     }
+                     } */}
                      {/* End End Date */}
 
 
@@ -264,4 +274,4 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
 
 }
 
-export { read_state };
+export { ReadState };
