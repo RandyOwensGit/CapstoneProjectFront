@@ -156,7 +156,7 @@ export const Login = () => {
                      <div>
                         <Link
                            to="/SeniorProject/registration"
-                           className="nav-link text-secondary linkHover"
+                           className="nav-link text-primary linkHover"
                            aria-current="page"
                            style={{ marginTop: '1rem' }}
                         >

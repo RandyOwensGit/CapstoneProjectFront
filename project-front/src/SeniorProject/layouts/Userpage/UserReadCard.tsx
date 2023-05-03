@@ -1,4 +1,4 @@
-import { Accordion, Badge, ProgressBar } from "react-bootstrap";
+import { Accordion, Badge, Col, ProgressBar, Row } from "react-bootstrap";
 import { ReadModel } from "../../models/ReadModel";
 import { useEffect, useState } from "react";
 import BookModel from "../../models/BookModel";
@@ -84,6 +84,7 @@ export const UserReadCard: React.FC<{ reads: ReadModel }> = (props) => {
          </Card> */}
          <Accordion>
             <Accordion.Item eventKey="0">
+
                <Accordion.Header className="">
                   <div style={{}}>
                      <h5 style={{ display: "inline-block", verticalAlign: "baseline", marginRight: "15px" }}><b>{book?.title}</b></h5>
@@ -103,9 +104,16 @@ export const UserReadCard: React.FC<{ reads: ReadModel }> = (props) => {
                      }
                   </div>
                </Accordion.Header>
+
                <Accordion.Body>
-                  {props.reads.totalPages}
+                  <Row>
+                     <Col>
+                        Progress: Page {/* Input Box */} 
+                        {props.reads.totalPages}
+                     </Col>
+                  </Row>
                </Accordion.Body>
+
             </Accordion.Item>
          </Accordion>
 
