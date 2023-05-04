@@ -81,3 +81,19 @@ export const getReads = async () => {
    return userReads;
 
 }
+
+// update total pages
+export const setPagesTotal = async (totalPages: number, id: number) => {
+
+   const user = JSON.parse(localStorage.getItem("user") || '{}' );
+
+   
+
+}
+
+// update pages read
+export const setPagesRead = async (pagesread: number, id: number) => {
+
+
+}
+

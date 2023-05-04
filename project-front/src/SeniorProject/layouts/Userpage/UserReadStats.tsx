@@ -1,4 +1,4 @@
-import { Card } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 
 
 /**
@@ -26,12 +26,20 @@ export const UserReadStats: React.FC<{totalBooks: number, finishedBooks: number,
             </Card.Header>
 
             <Card.Body className="">
-               {props.totalBooks} books added 
-               <br />
-               {props.finishedBooks} books finished
-               <br />
-               {props.readPages} out of {props.totalPages} pages read
-
+               <Row>
+                  <Col sm={8}>
+                     {props.totalBooks} books added 
+                     <br />
+                     {props.finishedBooks} books finished
+                     <br />
+                     {props.readPages} out of {props.totalPages} pages read
+                  </Col>
+                  <Col sm={4} className="align-text-bottom">
+                     <input type="date" ></input>
+                     To
+                     <input type="date" ></input>
+                  </Col>
+               </Row>
             </Card.Body>
 
          </Card>

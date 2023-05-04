@@ -110,8 +110,19 @@ export const UserReadCard: React.FC<{ reads: ReadModel }> = (props) => {
                   <Row>
                      <Col>
                         Page # 
-                        <Form style={{ display: "inline-block", verticalAlign: "baseline", marginLeft: "10px", marginRight: "10px", width: "5rem" }}>
-                           <Form.Control type="number" id="currentPage" placeholder={"" + currentPage} />
+                        <Form 
+                           style={{ 
+                              display: "inline-block", 
+                              verticalAlign: "baseline", 
+                              marginLeft: "10px", 
+                              marginRight: "10px", 
+                              width: "5rem" }}
+                           >
+                           <Form.Control 
+                              type="number" 
+                              id="currentPage" 
+                              placeholder={"" + currentPage} 
+                           />
                         </Form>
                         {props.reads.totalPages}
                      </Col>
