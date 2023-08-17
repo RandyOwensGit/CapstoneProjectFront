@@ -2,7 +2,7 @@
   
 ### Using ReactJS, Typescript, & autodeploying with Render.com  
   
-Currently built with portfolio website - To be seperated later  
+Currently built alongside my portfolio site & online personal projects - To be seperated later  
   
 ## Backend Repo  
   
