@@ -96,6 +96,8 @@ export const Login = () => {
                            : null
                      }
 
+                     - User account & Profile Feature currently disabled -
+
                      <Form
                         onSubmit={loginHandler}
                         className="border border-primary"

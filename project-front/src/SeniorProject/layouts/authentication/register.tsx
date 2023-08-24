@@ -82,6 +82,8 @@ export const Register = () => {
                }
             </div>
 
+            - User account & Profile Feature currently disabled -
+
             <Form
                onSubmit={registerHandler}
                className="border border-primary"
