@@ -72,6 +72,7 @@ export const TopNav = () => {
 
                </Nav>
 
+               - Database & Backend Service Offline -
 
                {/* right side of navbar */}
                {/* TODO: Add Collapse for responsive screen size */}
