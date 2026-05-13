@@ -17,7 +17,7 @@ export const Homepage = () => {
       >
 
          <header className="jumbotron">
-            <h2></h2>
+            <h2>What is this jumbotron thing?</h2>
          </header>
 
       </div>

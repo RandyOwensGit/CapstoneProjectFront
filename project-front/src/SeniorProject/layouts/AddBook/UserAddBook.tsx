@@ -17,6 +17,7 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
    // const [customDateStart, setCustomDateStart] = useState(false);
    // const [customDateFinished, setCustomDateFinished] = useState(false);
    // const [customPageTotal, setCustomPageTotal] = useState(0);
+   const [buttonEnabled, setButtonEnabled] = useState(true);
 
    const initialState = {
       setReadStateValue,
@@ -32,6 +33,15 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
       } else {
          setCustomPageCount(true);
       }
+
+   }
+
+   // validate custom page count is greater than 0 and less than 2500
+   const onCustomPageCount = (event: React.ChangeEvent<HTMLInputElement>) => {
+      // if (parseInt(event.target.value))
+      // ((e) => setTotalPages(parseInt(e.target.value)))
+
+      
 
    }
 
@@ -64,6 +74,8 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
 
    // function to execute on form submit
    async function addUserRead() {
+
+      // custom pages
 
       console.log("Sending to addRead function... ");
 
@@ -241,7 +253,7 @@ export const UserAddBook: React.FC<{ book: BookModel }> = (props) => {
                                  id="customPageTotal"
                                  type="text"
                                  placeholder="Total Pages in Your Book"
-                                 onChange={((e) => setTotalPages(parseInt(e.target.value)))}
+                                 onChange={onCustomPageCount}
                                  style={{ width: '20rem' }}
                                  className="mx-auto"
                               />

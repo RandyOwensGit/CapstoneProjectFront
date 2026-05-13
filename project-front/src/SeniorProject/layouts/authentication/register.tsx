@@ -125,7 +125,7 @@ export const Register = () => {
                      </FloatingLabel>
 
                      <Form.Text className="text-muted">
-                        Must be longer than 5 & 20 characters
+                        Between 5-20 characters
                      </Form.Text>
 
                   </Form.Group>
@@ -145,7 +145,7 @@ export const Register = () => {
                      </FloatingLabel>
 
                      <Form.Text className="text-muted">
-                        Must be longer than 5 & 20 characters
+                        Between 5-20 characters
                      </Form.Text>
 
                   </Form.Group>

@@ -9,17 +9,17 @@ import { ReadModel } from "../models/ReadModel";
  * 
  */
 
-const external = "https://senior-project-back.onrender.com/api/";
-const internal = "http://localhost:8080/api/";
+const API_URL = "https://senior-project-back.onrender.com/api/";
+const LOCAL_API_URL = "http://localhost:8090/api/";
 
 export const addRead = async (read: ReadModel) => {
 
    // convert the logged in user to a JSON Object - need user_id
    const user = JSON.parse(localStorage.getItem("user") || '{}');
 
-   const userAccountRequest = '' + external + 'userAccounts/' + user.id;
+   const userAccountRequest = '' + LOCAL_API_URL + 'userAccounts/' + user.id;
 
-   const response = await fetch('' + external + 'reads', {
+   const response = await fetch('' + LOCAL_API_URL + 'reads', {
       method: 'POST',
       headers: {
          "content-type": "application/json",
@@ -51,7 +51,7 @@ export const getReads = async () => {
 
    // fetch request
    const response = await fetch(
-      '' + external + 'userAccounts/' + user.id + '/reads', {
+      '' + LOCAL_API_URL + 'userAccounts/' + user.id + '/reads', {
       method: 'GET',
       headers: {
          "Accept": "application/json",

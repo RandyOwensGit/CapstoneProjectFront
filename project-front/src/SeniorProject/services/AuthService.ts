@@ -9,6 +9,7 @@
  * 
  */
 
+const LOCAL_API_URL = 'http://localhost:8090/api/user/';
 const API_URL = 'https://senior-project-back.onrender.com/api/user/';
 
 /**
@@ -20,7 +21,7 @@ const API_URL = 'https://senior-project-back.onrender.com/api/user/';
 export const login = async (username: string, password: string) => {
 
    // POST data
-   const response = await fetch(API_URL + 'login', {
+   const response = await fetch(LOCAL_API_URL + 'login', {
       method: 'POST',
       headers: {
          "content-type": "application/json",
@@ -71,7 +72,7 @@ export const logout = () => {
  * @returns JSONinfied response or numeric HTTP code
  */
 export const register = async (email: string, username: string, password: string) => {
-   const response = await fetch(API_URL + "register", {
+   const response = await fetch(LOCAL_API_URL + "register", {
       method: 'POST',
       headers: {
          "Accept": "application/json",
@@ -86,7 +87,7 @@ export const register = async (email: string, username: string, password: string
 
    // check for error
    if (!response) {
-      throw new Error("HTTP - SIGNUP FAILED - AuthService.signup()");
+      throw new Error("HTTP - SIGNUP FAILED - AuthService.register()");
    }
 
    if (response.status === 400) {
